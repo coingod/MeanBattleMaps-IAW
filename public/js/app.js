@@ -1,4 +1,4 @@
-var map = angular.module('meanBattleMaps', ['ngMap']);
+var map = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap']);
 
 map.controller('mapController', function($scope, $location, NgMap) {
   $scope.fbhref=$location.absUrl();

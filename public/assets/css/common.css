@@ -3,11 +3,7 @@
 }
 
 /* Height: 100% de la altura de la pantalla. Width: Se ajusta para completar. */
-ng-map {
+my-map {
   width: auto; 
   height: 100vh;
 }
-
-.fabToolbardemoBasicUsage md-fab-toolbar.md-right md-fab-trigger.align-with-text {
-  left: 7px; }
-

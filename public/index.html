@@ -7,51 +7,92 @@
 <!-- Angular Material style sheet -->
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 <link rel="stylesheet" href="/assets/css/common.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
 
-	<body ng-controller="mapController" ng-cloak>
-
+	<body ng-controller="mapController as vm" layout="column" ng-cloak>
+		
 		<md-toolbar layout="row" data-role="navigation">
 			<div class="md-toolbar-tools">
 				<span>&nbsp;&nbsp;</span>
 				<img src="/assets/img/logo.png" alt="" class="MEAN-Logo"/>
-				<h2 class="pressed-text" ui-sref="home" mean-token="'site-title'">&nbsp;MEAN</h2>
-				<md-button class="md-button" aria-label="{{item.link}}" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}" ng-repeat="item in hdrctr.menus.main" ui-sref="{{item.link}}" mean-token="item.link">
-					{{item.title}}
-				</md-button>
+				<h2>&nbsp;Mean Battle Maps</h2>
 				<span flex></span>
-				
-				<md-button class="md-button" aria-label="Sign Up">
-					Join
-				</md-button>
 				<md-button class="md-button" aria-label="Login">
 					Login
 				</md-button>
 			</div>
 		</md-toolbar>
-		
-		
 
+		<ng-map center="37.09024, -95.712891" zoom="4" mayTypeId="TERRAIN" disable-default-u-i="true">
+
+			<custom-control id="go-home" position="TOP_RIGHT" on-click="vm.goGermany()" index="1">
+				  <md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+					<md-fab-trigger class="align-with-text">
+						<md-button aria-label="menu" class="md-fab md-primary">
+							<md-icon class="material-icons">explore</md-icon>
+						</md-button>
+					</md-fab-trigger>
+
+					<md-toolbar>
+						<md-fab-actions class="md-toolbar-tools">
+							<md-button aria-label="comment" class="md-icon-button" on-click="vm.goGermany()">
+								<md-icon class="material-icons">face</md-icon>
+							</md-button>
+							<md-button aria-label="label" class="md-icon-button" on-click="vm.goEngland()">
+								<md-icon class="material-icons">book</md-icon>
+							</md-button>
+							<md-button aria-label="photo" class="md-icon-button" on-click="vm.goRussia()">
+								<md-icon class="material-icons">language</md-icon>																																		</language></md-icon>
+							</md-button>
+						</md-fab-actions>
+					</md-toolbar>
+				</md-fab-toolbar>
+    		</custom-control>
+
+			<shape name="circle" ng-repeat="city in vm.cities" no-watcher="true"
+				stroke-color="#FF0000"
+				stroke-opacity="0.8"
+				stroke-weight="2"
+				fill-color="#FF0000"
+				fill-opacity="0.35"
+				center="{{city.position}}"
+				radius="{{vm.getRadius(city.population)}}">
+			</shape>
+
+			<info-window id="1" position="-25.363882, 131.044922" visible="true">
+      			<div ng-non-bindable>Australia by Google</div>
+    		</info-window>
+
+			<marker position="-15.363882,131.044922" title="Hello World!"></marker>
+
+			<map-data
+				set-style="{fillColor: 'red', strokeWeight: 1}"
+      			load-geo-json="https://storage.googleapis.com/mapsdevsite/json/google.json">
+    		</map-data>
+		</ng-map>
+		
+		<!--
 		<md-content layout="column" layout-padding flex>
-			<md-divider></md-divider>
 			<div layout="row" layout-align="space-around start" layout-padding flex>
-			
-			<div class="left" layout="column" layout-align="center center" flex="60">
-				<div style="height: 600px; width: 100%">
-					<ng-map zoom="10" center="-38.70, -62.27" >
-						<marker position="-38.7018411,-62.2724209"
-							icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png">
-						</marker>
-					</ng-map>
+				<div class="left" layout="column" layout-align="center center" flex="60">
+					<div style="height: 600px; width: 100%">
+						<ng-map zoom="10" center="-38.70, -62.27" >
+							<marker position="-38.7018411,-62.2724209"
+								icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png">
+							</marker>
+						</ng-map>
+					</div>
+				</div>
+
+				<div class="right" layout="column" flex>
+					<div id="fb-root"></div>
+					<div class="fb-comments" data-href="{{fbhref}}" data-numposts="5"></div>   
 				</div>
 			</div>
-
-			<div class="right" layout="column" flex>
-				<div id="fb-root"></div>
-				<div class="fb-comments" data-href="{{fbhref}}" data-numposts="5"></div>   
-			</div>
 		</md-content>		
+		-->
 
 		<!-- Angular.js Libraries -->
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>

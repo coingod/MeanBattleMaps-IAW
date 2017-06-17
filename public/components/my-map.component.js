@@ -7,23 +7,45 @@ angular.module('meanBattleMaps').component('myMap', {
 
 function mapController($scope, NgMap){
     var ctrl = this;
-    NgMap.getMap().then(function (map) {
-        ctrl.map = map;
-    });
-
-    ctrl.markers = [
-        {id: 1, lat: 56.951, lng: 24.10, count: 2},
-        {id: 2, lat: 56.931, lng: 24.00, count: 2},
-        {id: 3, lat: 56.947, lng: 24.14, count: 3},
-        {id: 4, lat: 56.924, lng: 24.09, count: 2},
-        {id: 5, lat: 56.936, lng: 24.12, count: 2},
-        {id: 6, lat: 56.955, lng: 24.10, count: 4},
+    
+    //Batalla de prueba
+    var battle = {};
+    battle.name = "Dia D";
+    battle.operation = "Overlord";
+    battle.conflict = "Segunda Guerra Mundial";
+    battle.beligrants = ["Estados Unidos", "Alemania"];
+    battle.date = new Date(1944, 6, 6);
+    battle.location = "Normandia, Francia";
+    battle.result = "Victoria Aliada";
+    battle.markers = [
+        {title: "Playa Utah", icon:"/assets/img/icons/battle.png", lat: 49.4222982, lng: -1.1968746},
+        {title: "Playa Omaha", icon:"/assets/img/icons/battle.png", lat: 49.3726418, lng: -0.9377147},
+        {title: "Playa Gold", icon:"/assets/img/icons/battle.png", lat: 49.3319829, lng: -0.5778482},
+        {title: "Playa Juno", icon:"/assets/img/icons/battle.png", lat: 49.3260474, lng: -0.4601456},
+        {title: "Playa Sword", icon:"/assets/img/icons/battle.png", lat: 49.3114565, lng: -0.3907291},
     ];
 
+    //Arreglo con las batallas a mostrar en el mapa
+    ctrl.battles = [battle];
+
+    //Centramos la camara en la Batalla
+    var bounds = new google.maps.LatLngBounds();
+    for (var i=0; i<battle.markers.length; i++) {
+      var latlng = new google.maps.LatLng(battle.markers[i].lat, battle.markers[i].lng);
+      bounds.extend(latlng);
+    }
+
+    NgMap.getMap().then(function (map) {
+        ctrl.map = map;
+        ctrl.map.setCenter(bounds.getCenter());
+        ctrl.map.fitBounds(bounds);
+    });    
+
+    /*
     ctrl.germany = new google.maps.LatLng(51.0852265, 5.968913);
     ctrl.england = new google.maps.LatLng(52.7613184, -6.8044202);
     ctrl.russia = new google.maps.LatLng(49.8095222, 68.8103141);
-
+    
     ctrl.cities = {
         chicago: {population:2714856, position: [41.878113, -87.629798]},
         newyork: {population:8405837, position: [40.714352, -74.005973]},
@@ -44,6 +66,7 @@ function mapController($scope, NgMap){
     ctrl.goRussia = function() {
       ctrl.map.setCenter(ctrl.russia);
     }
+    */
 
     /*  UI del Mapa con Material */
 

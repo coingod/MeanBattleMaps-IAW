@@ -1,0 +1,47 @@
+<ng-map center="37.09024, -95.712891" zoom="4" mayTypeId="TERRAIN" disable-default-u-i="true">
+
+<custom-control id="go-home" position="TOP_RIGHT" on-click="vm.goGermany()" index="1">
+		<md-fab-toolbar md-open="demo.isOpen" count="demo.count" md-direction="{{demo.selectedDirection}}">
+		<md-fab-trigger class="align-with-text">
+			<md-button aria-label="menu" class="md-fab md-primary">
+				<md-icon class="material-icons">explore</md-icon>
+			</md-button>
+		</md-fab-trigger>
+
+		<md-toolbar>
+			<md-fab-actions class="md-toolbar-tools">
+				<md-button aria-label="comment" class="md-icon-button" on-click="vm.goGermany()">
+					<md-icon class="material-icons">face</md-icon>
+				</md-button>
+				<md-button aria-label="label" class="md-icon-button" on-click="vm.goEngland()">
+					<md-icon class="material-icons">book</md-icon>
+				</md-button>
+				<md-button aria-label="photo" class="md-icon-button" on-click="vm.goRussia()">
+					<md-icon class="material-icons">language</md-icon>																																		</language></md-icon>
+				</md-button>
+			</md-fab-actions>
+		</md-toolbar>
+	</md-fab-toolbar>
+</custom-control>
+
+<shape name="circle" ng-repeat="city in vm.cities" no-watcher="true"
+	stroke-color="#FF0000"
+	stroke-opacity="0.8"
+	stroke-weight="2"
+	fill-color="#FF0000"
+	fill-opacity="0.35"
+	center="{{city.position}}"
+	radius="{{vm.getRadius(city.population)}}">
+</shape>
+
+<info-window id="1" position="-25.363882, 131.044922" visible="true">
+	<div ng-non-bindable>Australia by Google</div>
+</info-window>
+
+<marker position="-15.363882,131.044922" title="Hello World!"></marker>
+
+<map-data
+	set-style="{fillColor: 'red', strokeWeight: 1}"
+	load-geo-json="https://storage.googleapis.com/mapsdevsite/json/google.json">
+</map-data>
+</ng-map>

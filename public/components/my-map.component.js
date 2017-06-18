@@ -53,11 +53,11 @@ function mapController($scope, NgMap, $mdSidenav){
         }
     ];
     battle.movements = [
-        {lat0: 49.5122982, lng0: -1.0068746, lat1: 49.4412982, lng1: -1.1668746, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
-        {lat0: 49.4726418, lng0: -0.8077147, lat1: 49.3726418, lng1: -0.9077147, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
-        {lat0: 49.4319829, lng0: -0.5278482, lat1: 49.3319829, lng1: -0.5778482, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
-        {lat0: 49.4260474, lng0: -0.4101456, lat1: 49.3260474, lng1: -0.4601456, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
-        {lat0: 49.4214565, lng0: -0.3007291, lat1: 49.3214565, lng1: -0.3907291, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]}
+        {title:"Desembarco 1", lat0: 49.5122982, lng0: -1.0068746, lat1: 49.4412982, lng1: -1.1668746, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
+        {title:"Desembarco 2", lat0: 49.4726418, lng0: -0.8077147, lat1: 49.3726418, lng1: -0.9077147, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
+        {title:"Desembarco 3", lat0: 49.4319829, lng0: -0.5278482, lat1: 49.3319829, lng1: -0.5778482, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
+        {title:"Desembarco 4", lat0: 49.4260474, lng0: -0.4101456, lat1: 49.3260474, lng1: -0.4601456, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
+        {title:"Desembarco 5", lat0: 49.4214565, lng0: -0.3007291, lat1: 49.3214565, lng1: -0.3907291, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]}
     ]
 
     $scope.battle = battle;

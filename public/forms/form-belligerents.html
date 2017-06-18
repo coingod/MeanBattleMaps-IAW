@@ -1,0 +1,39 @@
+<!-- form-belligerents.html -->
+<md-subheader class="md-primary">Beligrantes</md-subheader>
+
+<div layout-gt-xs="row">
+    <md-button ui-sref="form.basicinfo" class="md-raised md-primary" flex-gt-xs>
+        Anterior
+    </md-button>
+
+    <md-button ui-sref="form.markers" class="md-raised md-primary" flex-gt-xs>
+        Siguiente
+    </md-button>
+</div>
+
+<div layout-gt-xs="row">
+    <md-button class="md-raised" flex-gt-xs>
+        Agregar
+    </md-button>
+</div>
+
+<div ng-repeat="b in battle.belligerents">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{b.faction}}</span>
+                <span class="md-subhead">Ejercitos</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <p ng-repeat="a in b.armies">
+                {{a.title}}
+            </p>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Eliminar</md-button>
+        </md-card-actions>
+    </md-card>
+</div>

@@ -1,0 +1,31 @@
+<!-- form.html -->
+<md-toolbar class="md-theme-indigo">
+    <div class="md-toolbar-tools">
+        <h1 flex>Editar Batalla</h1>
+        <md-button class="md-icon-button" ng-click="toggleRight()" aria-label="Settings">
+            <md-icon class="material-icons">close</md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+
+<md-content layout-margin>
+
+    <!-- the links to our nested states using relative paths -->
+    <!-- add the active class if the state matches our ui-sref -->
+    <!--
+    <div id="status-buttons" class="text-center">
+        <md-button ui-sref-active="active" ui-sref=".basicinfo"><span>1</span> Informacion Basica</md-button>
+        <md-button ui-sref-active="active" ui-sref=".belligerents"><span>2</span> Beligrantes</md-button>
+        <md-button ui-sref-active="active" ui-sref=".markers"><span>3</span> Marcadores</md-button>
+        <md-button ui-sref-active="active" ui-sref=".movements"><span>4</span> Movimientos</md-button>
+    </div>
+    -->
+
+    <!-- use ng-submit to catch the form submission and use our Angular function -->
+    <form id="map-form" ng-submit="processForm()">
+
+        <!-- our nested state views will be injected here -->
+        <div id="form-views" ui-view></div>
+    </form>
+
+</md-content>

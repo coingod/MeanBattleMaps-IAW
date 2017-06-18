@@ -1,0 +1,49 @@
+<!-- form-markers.html -->
+<md-subheader class="md-primary">Marcadores</md-subheader>
+
+<div layout-gt-xs="row">
+    <md-button ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+        Anterior
+    </md-button>
+
+    <md-button ui-sref="form.movements" class="md-raised md-primary" flex-gt-xs>
+        Siguiente
+    </md-button>
+</div>
+
+<div layout-gt-xs="row">
+    <md-button class="md-raised" flex-gt-xs>
+        Agregar
+    </md-button>
+</div>
+
+<div ng-repeat="m in battle.markers">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{m.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+            <div layout-gt-xs="row">
+                <md-input-container class="md-block" flex-gt-xs required>
+                    <label>Latitud</label>
+                    <input ng-model="m.lat">
+                </md-input-container>
+                <md-input-container class="md-block" flex-gt-xs required>
+                    <label>Longitud</label>
+                    <input ng-model="m.lng">
+                </md-input-container>
+            </div>
+            <md-input-container class="md-block" required>
+                <label>Fatalidades</label>
+                <input ng-model="m.casualties">
+            </md-input-container>
+        </md-card-content>
+
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button>Eliminar</md-button>
+        </md-card-actions>
+    </md-card>
+</div>

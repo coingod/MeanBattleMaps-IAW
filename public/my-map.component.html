@@ -27,12 +27,49 @@
 
 	<!-- Batallas -->
 	<div ng-repeat="battle in $ctrl.battles">
-		<!-- Datos de una Batalla -->
+		<!-- Zonas de combate -->
 		<marker ng-repeat="m in battle.markers" 
 			position="{{m.lat}},{{m.lng}}"
 			title="{{m.title}}"
 			icon="{{m.icon}}">
 		</marker>
+        <shape name="circle" ng-repeat="m in battle.markers" no-watcher="true"
+            stroke-color="#FF0000"
+            stroke-opacity="0.8"
+            stroke-weight="2"
+            fill-color="#FF0000"
+            fill-opacity="0.35"
+            center="{{m.lat}},{{m.lng}}"
+            title="Fatalidades: {{m.casualties}}"
+            radius="{{$ctrl.getRadius(m.casualties) * 100}}">
+        </shape>
+        <!-- Ejercitos involucrados -->
+		<div ng-repeat="b in battle.belligerents">
+			<marker ng-repeat="a in b.armies"
+                position="{{a.lat}},{{a.lng}}"
+                title="({{b.faction}}) {{a.title}}"
+                icon="{{a.icon}}">
+            </marker>
+            <!--
+            <shape name="circle" ng-repeat="a in b.armies" no-watcher="true"
+                stroke-color="#00FF00"
+                stroke-opacity="0.8"
+                stroke-weight="2"
+                fill-color="#00FF00"
+                fill-opacity="0.35"
+                center="{{a.lat}},{{a.lng}}"
+                radius="{{$ctrl.getRadius(a.strength) * 50}}">
+            </shape>
+            -->
+		</div>
+        <!-- Movimientos de los ejercitos -->
+        <shape name="polyline" ng-repeat="m in battle.movements"
+            path="[[{{m.lat0}}, {{m.lng0}}], [{{m.lat1}}, {{m.lng1}}]]"
+            stroke-color="#FF0000"
+            stroke-opacity="0.5"
+            stroke-weight="10"
+            icons="{{m.icons}}">
+        </shape>
 	</div>
 
 	<!--

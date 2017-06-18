@@ -5,7 +5,7 @@ angular.module('meanBattleMaps').component('myMap', {
 
 //mapController.$inject = ['NgMap'];
 
-function mapController($scope, NgMap){
+function mapController($scope, NgMap, $mdSidenav){
     var ctrl = this;
     
     //Batalla de prueba
@@ -13,7 +13,8 @@ function mapController($scope, NgMap){
     battle.name = "Dia D";
     battle.operation = "Overlord";
     battle.conflict = "Segunda Guerra Mundial";
-    battle.date = new Date(1944, 6, 6);
+    battle.start = new Date(1944, 6, 6);
+    battle.end = new Date(1944, 6, 6);
     battle.location = "Normandia, Francia";
     battle.result = "Victoria Aliada";
     battle.markers = [
@@ -58,6 +59,8 @@ function mapController($scope, NgMap){
         {lat0: 49.4260474, lng0: -0.4101456, lat1: 49.3260474, lng1: -0.4601456, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]},
         {lat0: 49.4214565, lng0: -0.3007291, lat1: 49.3214565, lng1: -0.3907291, icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]}
     ]
+
+    $scope.battle = battle;
 
     //Arreglo con las batallas a mostrar en el mapa
     ctrl.battles = [battle];
@@ -117,4 +120,19 @@ function mapController($scope, NgMap){
       count: 0,
       selectedDirection: 'left'
     };
+
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+    $scope.isOpenRight = function(){
+      return $mdSidenav('right').isOpen();
+    };
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+
+    //Formulario de edicion de batalla
+    $scope.showHints = true;
 }

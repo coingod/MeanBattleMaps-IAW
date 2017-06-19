@@ -1,4 +1,4 @@
-var app = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap', 'ngAnimate', 'ui.router']);
+var app = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap', 'ngAnimate', 'vAccordion', 'ui.router']);
 
 // our controller for the form
 // =============================================================================
@@ -6,9 +6,6 @@ app.controller('appController', function($scope, $location, NgMap) {
 
   //Configuramos la URL de la web para el plugin de FB
   $scope.fbhref=$location.absUrl();
-
-  // we will store all of our form data in this object
-  //$scope.formData = {};
 
   // function to process the form
   $scope.processForm = function() {

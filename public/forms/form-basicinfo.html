@@ -1,12 +1,6 @@
 <!-- form-basicinfo.html -->
 <md-subheader class="md-primary">Informacion Basica</md-subheader>
 
-<div layout-gt-xs="row">
-    <md-button ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
-        Siguiente
-    </md-button>
-</div>
-
 <md-input-container class="md-block">
     <label>Nombre</label>
     <input ng-model="battle.name" required name="name">
@@ -48,3 +42,9 @@
     <input ng-model="battle.result">
     <div class="hint">Cual fue el Resultado?</div>
 </md-input-container>
+
+<div layout-gt-xs="row">
+    <md-button ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+        Siguiente
+    </md-button>
+</div>

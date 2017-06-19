@@ -1,0 +1,20 @@
+<md-dialog>
+    <form name="Form">
+    <md-input-container class="md-block">
+      <label>Login</label>
+      <input type="text" name="email" ng-model="formData.name" placeholder="login" required=""/>
+      <div ng-messages="Form.name.$error" role="alert" multiple="">
+        <div ng-message="required" class="my-message">Please enter your user.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block">
+      <label>Password</label>
+      <input type="password" name="password" ng-model="formData.password" placeholder="password" required="" md-maxlength="16"/>
+      <div ng-messages="Form.password.$error" role="alert" multiple="">
+        <div ng-message="required" class="my-message">Please enter your password.</div>
+      </div>
+    </md-input-container>
+    <md-button ng-disabled="!Form.$valid" ng-click="login()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+  </form>        
+</md-dialog>
+

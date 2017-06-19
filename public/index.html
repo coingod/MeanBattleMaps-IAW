@@ -14,18 +14,9 @@
 
 	<body layout="column" ng-cloak>
 		
-		<!-- Header Main Toolbar -->
-		<md-toolbar layout="row" data-role="navigation">
-			<div class="md-toolbar-tools">
-				<span>&nbsp;&nbsp;</span>
-				<img src="/assets/img/logo.png" alt="" class="MEAN-Logo"/>
-				<h2>&nbsp;Mean Battle Maps</h2>
-				<span flex></span>
-				<md-button class="md-button" aria-label="Login">
-					Login
-				</md-button>
-			</div>
-		</md-toolbar>
+		
+
+		<my-login></my-login>
 		
 		<!-- Google Map -->
 		<my-map></my-map>
@@ -67,5 +58,6 @@
 
 	<!-- Components -->
 	<script src="components/my-map.component.js"></script>
+	<script src="components/my-login.component.js"></script>
 
 </html>

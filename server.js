@@ -65,10 +65,10 @@ app.get('/setup', function(req, res) {
 var apiRoutes = express.Router(); 
 
 
-apiRoutes.post('/loadbattles', function(req, res) {
+apiRoutes.post('/loadbattle', function(req, res) {
 	console.log(req.body.battles);
-	Battle.collection.insertMany(req.body.battles, function(err,r) {
- 		 console.log("Batalla: "+req.body.battles[0].name+" insertada en la Base de Datos");
+	Battle.collection.insertOne(req.body.battle, function(err,r) {
+ 		 console.log("Batalla: "+req.body.battle.name+" insertada en la Base de Datos");
 	});
 	res.json({success:true, message:"Llego el mapa :)"});
 });

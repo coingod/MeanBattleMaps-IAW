@@ -154,6 +154,40 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     //Batalla acutal
     $scope.battle = battle;
 
+    //ID Hardcodeado
+    var x='59499f79c7e48b26089e79c8';  
+    $scope.updateBattle = function(ev) {
+        /*
+        $http.get('/api/battle/'+x).then(function successCallback(response) {
+            console.log("Antes del update!");
+            console.log(response);
+          }, function errorCallback(response) {window.alert("Error del servidor.");});
+          */
+        //UPdateamos
+        $http.post('/api/updatebattle/'+x, {"battles": ctrl.battles}).then(function successCallback(response) {
+          console.log(response.data);
+          $mdDialog.show(
+            $mdDialog.alert()
+              //.parent(angular.element(document.querySelector('#popupContainer')))
+              .clickOutsideToClose(true)
+              .title('Batalla Updateada')
+              .textContent('La Batalla ha sido actualizada con exito.')
+              .ariaLabel('Batalla Updateada')
+              .ok('Confirmar')
+              .targetEvent(ev)
+          );
+        }, function errorCallback(response) {
+          // called asynchronously if an error occurs or server returns response with an error status.
+          window.alert("Error del servidor.");
+        });
+        /*
+        $http.get('/api/battle/'+x).then(function successCallback(response) {
+          console.log("Despues del update!");
+          console.log(response);
+        }, function errorCallback(response) {window.alert("Error del servidor.");});
+        */
+      };
+
     //Arreglo con las batallas a mostrar en el mapa
     ctrl.battles = [battle];
 
@@ -178,7 +212,6 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
     //Buscamos X batalla en la db :)    
     //El id este se obtiene pidiendole al objeto Battle el atributo "_id". Lo genera mongo automaticamente
-    var x='59496f87a8d22309d470602c';    
     $http.get('/api/battle/'+x).then(function successCallback(response) {
       console.log(response);
       }, function errorCallback(response) {

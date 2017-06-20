@@ -2,10 +2,6 @@
   height: 80%
 }
 
-.fb-comments {
-    
-}
-
 md-toast {
     right: 320px;
     top: 10%;
@@ -28,6 +24,9 @@ md-table-container {
 my-map {
   width: auto; 
   height: 100vh;
+}
+ng-map {
+  height: 100%;
 }
 
 /* FORMS

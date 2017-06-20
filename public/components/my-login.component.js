@@ -5,11 +5,45 @@ angular.module('meanBattleMaps').component('myLogin', {
 
 //mapController.$inject = ['NgMap'];
  
-function loginController($scope, NgMap, $mdDialog, $http){
+function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageService){
     var ctrl = this; 
-    $scope.adminLogged=false;
+    //Chequeamos a ver si hay un token almacenado previamente
+    $scope.tokenjwt=localStorageService.get('tokenjwt');
+    if($scope.tokenjwt){
+      //Si existe un token debemos chequear que todavía sea valido
+      $http.get('/api/check?token='+$scope.tokenjwt).then(function successCallback(response) {
+            // this callback will be called asynchronously
+            // when the response is available
+            console.log(response.data);
+            if(response.data.success==false){
+              //Token expiró, debe volver a autenticarse!
+              $scope.adminLogged=false;
+            }
+            else{
+              //We're in! Yaaaay
+              $scope.adminLogged=true;
+            }
+          }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            window.alert("Error del servidor.");
+          });
+    }
+    else{
+      //No existe token, debe autenticarse!
+      $scope.adminLogged=false;
+    }
 
-     $scope.showAdvanced = function(ev) {
+    $scope.openMenu = function($mdOpenMenu, ev)     {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+    $scope.logOut = function(ev) {
+      $scope.tokenjwt=null;
+      $scope.adminLogged=false;
+    }
+
+    $scope.showAdvanced = function(ev) {
       $mdDialog.show({
         controller: DialogController,
         templateUrl: '../forms/form-login.html',
@@ -27,6 +61,7 @@ function loginController($scope, NgMap, $mdDialog, $http){
             if(response.data.success==true){
               //Mostrar botón de edicion
               //TOKEN=response.data.token
+              localStorageService.set('tokenjwt', response.data.token);
               $scope.adminLogged=true;
             }
             else{

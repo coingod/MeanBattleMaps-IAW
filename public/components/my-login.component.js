@@ -5,7 +5,7 @@ angular.module('meanBattleMaps').component('myLogin', {
 
 //mapController.$inject = ['NgMap'];
  
-function loginController($scope, NgMap, $mdDialog, $mdSidenav, $http){
+function loginController($scope, NgMap, $mdDialog, $http){
     var ctrl = this; 
     $scope.adminLogged=false;
 
@@ -55,7 +55,7 @@ function loginController($scope, NgMap, $mdDialog, $mdSidenav, $http){
     };
     
     /*  UI del Mapa con Material */
-    
+    /*
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 
@@ -70,7 +70,7 @@ function loginController($scope, NgMap, $mdDialog, $mdSidenav, $http){
         $mdSidenav(componentId).toggle();
       };
     }
-
+    */
       function DialogController($scope, $mdDialog) {
         //Defaults
         $scope.formData={};

@@ -18,6 +18,10 @@ md-bottom-sheet {
     /*max-height: 320px;*/
 }
 
+md-table-container {
+    max-height: 25vw;
+}
+
 /* MAP
 ============================================================================= */
 /* Height: 100% de la altura de la pantalla. Width: Se ajusta para completar. */

@@ -532,13 +532,8 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     };
 
     function BattleListCtrl($scope, $mdBottomSheet) {
-      $scope.items = [
-        { name: 'Share', icon: 'share-arrow' },
-        { name: 'Upload', icon: 'upload' },
-        { name: 'Copy', icon: 'copy' },
-        { name: 'Print this page', icon: 'print' },
-      ];
-
+      $scope.items = [];
+      
       //Chequeamos las batallas cargadas en la db
       $http.get('/api/getbattles').then(function successCallback(response) {
           console.log(response);
@@ -549,6 +544,22 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
         window.alert("Error del servidor.");
       });
 
+      $scope.selected = [];
+      
+      $scope.query = {
+        order: 'name',
+        limit: 5,
+        page: 1
+      };
+      
+      function success(desserts) {
+        $scope.desserts = desserts;
+      }
+      /*
+      $scope.getDesserts = function () {
+        $scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
+      };
+      */
       $scope.close = function() {
         $mdBottomSheet.hide();
       };

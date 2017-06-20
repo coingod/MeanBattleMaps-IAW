@@ -1,4 +1,4 @@
-var app = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap', 'ngAnimate', 'vAccordion', 'ui.router']);
+var app = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap', 'ngAnimate', 'vAccordion', 'ui.router', 'LocalStorageModule']);
 
 // our controller for the form
 // =============================================================================

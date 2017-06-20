@@ -5,9 +5,26 @@
 				<img src="/assets/img/logo.png" alt="" class="MEAN-Logo"/>
 				<h2>&nbsp;Mean Battle Maps</h2>
 				<span flex></span>
-				<md-button class="md-button" ng-show="!adminLogged" ng-click="showAdvanced()" aria-label="Login">
-					Login
-				</md-button>
+				<md-menu>
+					<!-- Trigger element is a md-button with an icon -->
+					<md-button ng-click="openMenu($mdOpenMenu, $event)" class="md-icon-button" aria-label="Open sample menu">
+						<i class="material-icons">menu</i>
+					</md-button>
+					<md-menu-content>
+					<md-menu-item>
+						<md-button class="md-button" aria-label="Login" ng-disabled="!adminLogged" ng-click="showAdvanced()">
+							Login
+						</md-button>
+					</md-menu-item>
+					<md-menu-item>
+						<md-button class="md-button" aria-label="Logout" ng-click="logOut()" ng-disabled="adminLogged">
+							Logout
+						</md-button>
+					</md-menu-item>
+					</md-menu-content>
+				</md-menu>
+				
+				
 			</div>
 		</md-toolbar>
 

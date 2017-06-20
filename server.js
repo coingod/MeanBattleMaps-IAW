@@ -73,6 +73,16 @@ apiRoutes.post('/loadbattles', function(req, res) {
 	res.json({success:true, message:"Llego el mapa :)"});
 });
 
+apiRoutes.post('/updatebattle/:id', function(req, res) {
+	console.log(req.body.battles[0]);
+	Battle.update({_id: req.params.id}, req.body.battles[0], function(err,r){
+		if (err) {
+			res.send(err);
+			}
+		res.send(r);
+	});
+});
+
 apiRoutes.get('/battle/:id', function(req, res) {
 	Battle.findOne({_id: req.params.id}, function(err, battle) {
 		console.log("Los id que estoy comparando:" + req.params.id)
@@ -82,6 +92,13 @@ apiRoutes.get('/battle/:id', function(req, res) {
 
 apiRoutes.get('/getbattles', function(req, res) {
 	Battle.find({}, function(err, battles) {
+		res.json(battles);
+	});
+});
+
+apiRoutes.get('/deletebattles', function(req, res) {
+	Battle.collection.deleteMany({},function(err, battles) {
+		console.log("Flush exitoso!");
 		res.json(battles);
 	});
 });

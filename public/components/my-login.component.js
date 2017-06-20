@@ -5,13 +5,14 @@ angular.module('meanBattleMaps').component('myLogin', {
 
 //mapController.$inject = ['NgMap'];
  
-function loginController($scope, NgMap, $mdDialog, $http){
+function loginController($scope, NgMap, $mdDialog, $mdSidenav, $http){
     var ctrl = this; 
+    $scope.adminLogged=false;
 
      $scope.showAdvanced = function(ev) {
       $mdDialog.show({
         controller: DialogController,
-        templateUrl: '../loginform.html',
+        templateUrl: '../forms/form-login.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
@@ -23,31 +24,52 @@ function loginController($scope, NgMap, $mdDialog, $http){
             // this callback will be called asynchronously
             // when the response is available
             console.log(response.data);
+            if(response.data.success==true){
+              //Mostrar botón de edicion
+              //TOKEN=response.data.token
+              $scope.adminLogged=true;
+            }
+            else{
+              $mdDialog.show(
+                $mdDialog.alert()
+                  .parent(angular.element(document.querySelector('#popupContainer')))
+                  .clickOutsideToClose(true)
+                  .title('Error')
+                  .textContent('Combinacion usuario/contraseña incorrecta.')
+                  .ok('OK')
+                  .targetEvent(ev)
+              );
+            }
           }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
-            window.alert("Error en el login.");
+            window.alert("Error del servidor.");
           });
-        $scope.status = 'You said the information was "' + answer + '".';
       }, function() {
         $scope.status = 'You cancelled the dialog.';
       });
     };
 
     $scope.doPrimaryAction = function(event) {
-      //ctrl.map.setCenter(ctrl.england);
       console.log(event);
-      /*
-      $mdDialog.show(
-        $mdDialog.alert()
-          .title('Primary Action')
-          .textContent('Primary actions can be used for one click actions')
-          .ariaLabel('Primary click demo')
-          .ok('Awesome!')
-          .targetEvent(event)
-      );
-     */
     };
+    
+    /*  UI del Mapa con Material */
+    
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+    $scope.isOpenRight = function(){
+      return $mdSidenav('right').isOpen();
+    };
+    $scope.isOpenLeft = function(){
+      return $mdSidenav('left').isOpen();
+    };
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
 
       function DialogController($scope, $mdDialog) {
         //Defaults

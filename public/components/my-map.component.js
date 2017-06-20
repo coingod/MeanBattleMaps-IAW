@@ -155,7 +155,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     $scope.battle = battle;
 
     //ID Hardcodeado
-    var x='59499f79c7e48b26089e79c8';  
+    var x='5949b10b3d010423ecb55361';  
     $scope.updateBattle = function(ev) {
         /*
         $http.get('/api/battle/'+x).then(function successCallback(response) {
@@ -164,7 +164,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
           }, function errorCallback(response) {window.alert("Error del servidor.");});
           */
         //UPdateamos
-        $http.post('/api/updatebattle/'+x, {"battles": ctrl.battles}).then(function successCallback(response) {
+        $http.post('/api/updatebattle/'+x, {"battle": battle}).then(function successCallback(response) {
           console.log(response.data);
           $mdDialog.show(
             $mdDialog.alert()
@@ -193,7 +193,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
     //Envia al servidor la informacion de una batalla nueva para su almacenamiento
     $scope.saveBattle = function(ev) {
-      $http.post('/api/loadbattles', {"battles": ctrl.battles}).then(function successCallback(response) {
+      $http.post('/api/loadbattle', {"battle": battle}).then(function successCallback(response) {
         $mdDialog.show(
           $mdDialog.alert()
             //.parent(angular.element(document.querySelector('#popupContainer')))

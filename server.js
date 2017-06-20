@@ -74,8 +74,8 @@ apiRoutes.post('/loadbattle', function(req, res) {
 });
 
 apiRoutes.post('/updatebattle/:id', function(req, res) {
-	console.log(req.body.battles[0]);
-	Battle.update({_id: req.params.id}, req.body.battles[0], function(err,r){
+	console.log(req.body.battle);
+	Battle.update({_id: req.params.id}, req.body.battle, function(err,r){
 		if (err) {
 			res.send(err);
 			}

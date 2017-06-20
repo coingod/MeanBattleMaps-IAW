@@ -1,0 +1,53 @@
+<md-dialog aria-label="Nuevo Beligrante">
+    <form name="Form" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Nuevo Marcador</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                
+                <p>Los Marcadores sirven para indicar la posicion de eventos o entidades reelevantes a la batalla.<br>Como zonas de combate, objetivos estrategicos, puntos defensivos, etc.</p>
+                
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input type="text" name="title" ng-model="formData.title" placeholder="Ej: Frontera, 1812" required/>
+                    <div ng-messages="Form.title.$error" role="alert">
+                        <div ng-message="required" class="my-message">Requerido.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Tipo</label>
+                    <md-select name="avatar" ng-model="formData.avatar" required>
+                        <md-option value="trending_up">Flecha</md-option>
+                        <md-option value="show_chart">Linea</md-option>
+                    </md-select>
+                    <div ng-messages="Form.avatar.$error" role="alert">
+                        <div ng-message="required" class="my-message">Requerido.</div>
+                    </div>
+                </md-input-container>
+                
+                <md-input-container class="md-block">
+                    <label>Color</label>
+                    <input type="text" name="color" ng-model="formData.color" placeholder="Ej: #FF0000" required/>
+                </md-input-container>
+                    
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-disabled="!Form.$valid" ng-click="confirm()">
+                Aceptar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+

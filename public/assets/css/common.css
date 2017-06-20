@@ -6,6 +6,11 @@
     
 }
 
+md-toast {
+    right: 320px;
+    top: 10%;
+}
+
 /* MAP
 ============================================================================= */
 /* Height: 100% de la altura de la pantalla. Width: Se ajusta para completar. */

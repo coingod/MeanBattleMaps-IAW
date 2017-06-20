@@ -1,0 +1,54 @@
+<md-dialog aria-label="Nuevo Beligrante">
+    <form name="Form" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Nuevo Ejercito</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+                    <md-input-container class="md-block">
+                        <label>Nombre</label>
+                        <input type="text" name="title" ng-model="formData.title" placeholder="Ej: 2º Batallón de Infanteria" required/>
+                        <div ng-messages="Form.title.$error" role="alert">
+                            <div ng-message="required" class="my-message">Requerido.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Bandera</label>
+                        <md-select name="icon" ng-model="formData.icon" required>
+                            <md-option value="ge">Alemania</md-option>
+                            <md-option value="us">Estados Unidos</md-option>
+                            <md-option value="uk">Reino Unido</md-option>
+                            <md-option value="ca">Canada</md-option>
+                            <md-option value="ru">Rusia</md-option>
+                        </md-select>
+                        <div ng-messages="Form.icon.$error" role="alert">
+                            <div ng-message="required" class="my-message">Requerido.</div>
+                        </div>
+                    </md-input-container>
+                    
+                    <md-input-container class="md-block">
+                        <label>Fuerza</label>
+                        <input type="number" name="strength" ng-model="formData.strength"/>
+                    </md-input-container>
+                    
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-disabled="!Form.$valid" ng-click="confirm()">
+                Aceptar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
+

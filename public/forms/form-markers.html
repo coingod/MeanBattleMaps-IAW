@@ -5,12 +5,12 @@
     <md-list-item ng-repeat="m in battle.markers" ng-click="doPrimaryAction($event)" class="noright">
         <img alt="{{ m.title }}" ng-src="{{ m.icon.url }}" class="md-avatar" />
         <p>{{ m.title }}</p>
-        <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="doSecondaryAction($event)">delete</md-icon>
+        <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="deleteMarker($event, m.id)">delete</md-icon>
     </md-list-item>
 </md-list>
 
 <div layout-gt-xs="row">
-    <md-button class="md-raised" flex-gt-xs>
+    <md-button class="md-raised" ng-click="addMarker($event)" flex-gt-xs>
         Agregar
     </md-button>
 </div>

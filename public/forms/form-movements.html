@@ -9,12 +9,12 @@
             >{{f.avatar}}
         </md-icon>
         <p>{{ f.title }}</p>
-        <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="doSecondaryAction($event)">delete</md-icon>
+        <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="deletePath($event, f.id)">delete</md-icon>
     </md-list-item>
 </md-list>
 
 <div layout-gt-xs="row">
-    <md-button class="md-raised" flex-gt-xs>
+    <md-button class="md-raised" ng-disabled="$ctrl.drawingPath" ng-click="addPath($event)" flex-gt-xs>
         Agregar
     </md-button>
 </div>

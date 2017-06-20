@@ -153,40 +153,47 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http){
 
     $scope.battle = battle;
 
-    
-
     //Arreglo con las batallas a mostrar en el mapa
     ctrl.battles = [battle];
 
-    //Cargamos las batallas por defecto en la db
-    $http.post('/api/loadbattles', {"battles":ctrl.battles}).then(function successCallback(response) {
-          window.alert("Batallas cargadas!");
-        }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                window.alert("Error del servidor.");
-              });
+    //Envia al servidor la informacion de una batalla nueva para su almacenamiento
+    $scope.saveBattle = function(ev) {
+      $http.post('/api/loadbattles', {"battles": ctrl.battles}).then(function successCallback(response) {
+        $mdDialog.show(
+          $mdDialog.alert()
+            //.parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('Batalla Guardada')
+            .textContent('La Batalla ha sido guardada con exito.')
+            .ariaLabel('Batalla guardada')
+            .ok('Confirmar')
+            .targetEvent(ev)
+        );
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs or server returns response with an error status.
+        window.alert("Error del servidor.");
+      });
+    };
 
     //Chequeamos las batallas cargadas en la db
     $http.get('/api/getbattles').then(function successCallback(response) {
-              console.log(response);
-            }, function errorCallback(response) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    window.alert("Error del servidor.");
-                  });
+        console.log(response);
+      }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      window.alert("Error del servidor.");
+    });
 
     //Buscamos X batalla en la db :)    
     //El id este se obtiene pidiendole al objeto Battle el atributo "_id". Lo genera mongo automaticamente
-    
-    var x='59493ea4532a0814885030f2';    
+    var x='59496f87a8d22309d470602c';    
     $http.get('/api/battle/'+x).then(function successCallback(response) {
-              console.log(response);
-            }, function errorCallback(response) {
-                    // called asynchronously if an error occurs
-                    // or server returns response with an error status.
-                    window.alert("Error del servidor.");
-                  });
+      console.log(response);
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        window.alert("Error del servidor.");
+      });
 
     //Centramos la camara en la Batalla
     var bounds = new google.maps.LatLngBounds();

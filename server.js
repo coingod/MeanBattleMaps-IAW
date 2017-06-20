@@ -68,7 +68,7 @@ var apiRoutes = express.Router();
 apiRoutes.post('/loadbattles', function(req, res) {
 	console.log(req.body.battles);
 	Battle.collection.insertMany(req.body.battles, function(err,r) {
- 		 console.log("Haloo");
+ 		 console.log("Batalla: "+req.body.battles[0].name+" insertada en la Base de Datos");
 	});
 	res.json({success:true, message:"Llego el mapa :)"});
 });

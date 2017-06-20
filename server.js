@@ -14,6 +14,7 @@ const saltRounds = 10;
 
 var config = require('./config'); // get our config file
 var User   = require('./app/models/user'); // get our mongoose model
+var Battle = require('./app/models/battle');
 
 // =================================================================
 // configuration ===================================================
@@ -21,7 +22,6 @@ var User   = require('./app/models/user'); // get our mongoose model
 var port = process.env.PORT || 3000; // used to create, sign, and verify tokens
 mongoose.connect(config.database); // connect to database
 app.set('superSecret', config.secret); // secret variable
-
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -53,6 +53,7 @@ app.get('/setup', function(req, res) {
 	});
 });
 
+
 // basic route (http://localhost:8080)
 // app.get('/', function(req, res) {
 // 	res.send('Hello! The API is at http://localhost:' + port + '/api');
@@ -62,6 +63,28 @@ app.get('/setup', function(req, res) {
 // get an instance of the router for api routes
 // ---------------------------------------------------------
 var apiRoutes = express.Router(); 
+
+
+apiRoutes.post('/loadbattles', function(req, res) {
+	console.log(req.body.battles);
+	Battle.collection.insertMany(req.body.battles, function(err,r) {
+ 		 console.log("Haloo");
+	});
+	res.json({success:true, message:"Llego el mapa :)"});
+});
+
+apiRoutes.get('/battle/:id', function(req, res) {
+	Battle.findOne({_id: req.params.id}, function(err, battle) {
+		console.log("Los id que estoy comparando:" + req.params.id)
+		res.json(battle);
+	});
+});
+
+apiRoutes.get('/getbattles', function(req, res) {
+	Battle.find({}, function(err, battles) {
+		res.json(battles);
+	});
+});
 
 // ---------------------------------------------------------
 // authentication (no middleware necessary since this isnt authenticated)

@@ -5,7 +5,7 @@ angular.module('meanBattleMaps').component('myMap', {
 
 //mapController.$inject = ['NgMap'];
 
-function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http){
+function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $mdBottomSheet){
     var ctrl = this;
     //En modo de creacion de lineas, esta variable indica el estado del path
     var currentLine = {};
@@ -151,6 +151,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http){
         },
     ]
 
+    //Batalla acutal
     $scope.battle = battle;
 
     //Arreglo con las batallas a mostrar en el mapa
@@ -174,15 +175,6 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http){
         window.alert("Error del servidor.");
       });
     };
-
-    //Chequeamos las batallas cargadas en la db
-    $http.get('/api/getbattles').then(function successCallback(response) {
-        console.log(response);
-      }, function errorCallback(response) {
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
-      window.alert("Error del servidor.");
-    });
 
     //Buscamos X batalla en la db :)    
     //El id este se obtiene pidiendole al objeto Battle el atributo "_id". Lo genera mongo automaticamente
@@ -523,6 +515,47 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http){
 
       $scope.confirm = function() {
         $mdDialog.hide($scope.formData);
+      };
+    }
+
+    //UI Lista de Batallas
+    $scope.showBattleList = function() {
+      $scope.alert = '';
+      $mdBottomSheet.show({
+        templateUrl: 'battle-list.html',
+        controller: BattleListCtrl
+      }).then(function(clickedItem) {
+        $scope.alert = clickedItem['name'] + ' clicked!';
+      }).catch(function(error) {
+        // User clicked outside or hit escape
+      });
+    };
+
+    function BattleListCtrl($scope, $mdBottomSheet) {
+      $scope.items = [
+        { name: 'Share', icon: 'share-arrow' },
+        { name: 'Upload', icon: 'upload' },
+        { name: 'Copy', icon: 'copy' },
+        { name: 'Print this page', icon: 'print' },
+      ];
+
+      //Chequeamos las batallas cargadas en la db
+      $http.get('/api/getbattles').then(function successCallback(response) {
+          console.log(response);
+          $scope.items = response.data;
+        }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        window.alert("Error del servidor.");
+      });
+
+      $scope.close = function() {
+        $mdBottomSheet.hide();
+      };
+
+      $scope.listItemClick = function($index) {
+        var clickedItem = $scope.items[$index];
+        $mdBottomSheet.hide(clickedItem);
       };
     }
 }

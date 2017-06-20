@@ -1,0 +1,73 @@
+<md-bottom-sheet class="md-list md-has-header">
+
+    <md-toolbar class="md-theme-indigo">
+        <div class="md-toolbar-tools">
+            <h1 flex>Listado de Batallas</h1>
+            <md-button class="md-icon-button" ng-click="close()" aria-label="Settings">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    
+    <md-input-container class="md-block">
+        <label>Buscar</label>
+        <input ng-model="$ctrl.query">
+    </md-input-container>
+
+    <!--
+    <md-content flex layout-padding>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Operacion</th>
+                    <th>Conflicto</th>
+                    <th>Locacion</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+        </table>
+        <table id="tabla">
+            <tbody>
+                <tr ng-repeat="battle in items | filter:$ctrl.query">
+                    <td>
+                        {{ battle.name }}
+                    </td>
+                    <td>
+                        {{ battle.operation }}
+                    </td>
+                    <td>
+                        {{ battle.conflict }}
+                    </td>
+                    <td>
+                        {{ battle.location }}
+                    </td>
+                    <td>
+                        {{ battle.result }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </md-content>
+    -->
+    
+    <md-list ng-cloak>
+        <md-content flex layout-padding>
+            <md-list-item ng-repeat="battle in items | filter:$ctrl.query">
+
+                <md-button flex
+                    ng-click="listItemClick($index)"
+                    class="md-list-item-content" >
+                    <md-icon class="material-icons">map</md-icon>
+                    <span class="md-inline-list-icon-label">{{ battle.name }}</span>
+                    <span class="md-inline-list-icon-label">{{ battle.operation }}</span>
+                    <span class="md-inline-list-icon-label">{{ battle.conflict }}</span>
+                    <span class="md-inline-list-icon-label">{{ battle.location }}</span>
+                    <span class="md-inline-list-icon-label">{{ battle.result }}</span>
+                </md-button>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-content>
+    </md-list>
+    
+</md-bottom-sheet>

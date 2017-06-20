@@ -11,6 +11,13 @@ md-toast {
     top: 10%;
 }
 
+md-bottom-sheet {
+    padding: 0;
+    border-top-style: none;
+    bottom: 80px;
+    /*max-height: 320px;*/
+}
+
 /* MAP
 ============================================================================= */
 /* Height: 100% de la altura de la pantalla. Width: Se ajusta para completar. */

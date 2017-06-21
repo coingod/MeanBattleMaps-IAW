@@ -13,11 +13,11 @@ function battleListController($http, $scope, $mdBottomSheet, $rootScope){
       $mdBottomSheet.show({
         templateUrl: '../battle-list.html',
         controller: BattleListCtrl
-      }).then(function(clickedItem) {
+      })/*.then(function(clickedItem) {
         $scope.alert = clickedItem['name'] + ' clicked!';
       }).catch(function(error) {
         // User clicked outside or hit escape
-      });
+      })*/;
     };
 
     function BattleListCtrl($http, $scope, $mdBottomSheet) {

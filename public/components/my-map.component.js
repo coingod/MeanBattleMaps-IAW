@@ -261,6 +261,13 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
 
+    $scope.newBattle = function(ev) {
+      battle = {};
+      $rootScope.selectedBattle = {};
+      console.log($rootScope.selectedBattle);
+      $mdSidenav('right').toggle();
+    };
+
     $scope.isOpenRight = function(){
       return $mdSidenav('right').isOpen();
     };

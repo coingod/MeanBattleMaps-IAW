@@ -153,6 +153,8 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
     //Batalla acutal
     $scope.battle = battle;
+    
+    $rootScope.selectedBattle=battle;
 
     //ID Hardcodeado
     var x='5949b10b3d010423ecb55361';  
@@ -190,7 +192,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
     //Arreglo con las batallas a mostrar en el mapa
     ctrl.battles = [battle];
-
+    
     //Envia al servidor la informacion de una batalla nueva para su almacenamiento
     $scope.saveBattle = function(ev) {
       $http.post('/api/loadbattle', {"battle": battle}).then(function successCallback(response) {

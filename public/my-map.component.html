@@ -6,14 +6,14 @@
 	<!-- Batallas -->
 	<div ng-repeat="battle in $ctrl.battles">
 		<!-- Zonas de combate -->
-		<marker ng-repeat="m in battle.markers" 
+		<marker ng-repeat="m in $root.selectedBattle.markers" 
 			position="{{m.lat}},{{m.lng}}"
             draggable="true"
 			title="{{m.title}}"
 			icon="{{m.icon}}">
 		</marker>
         <!-- Ejercitos involucrados -->
-		<div ng-repeat="b in battle.belligerents">
+		<div ng-repeat="b in $root.selectedBattle.belligerents">
 			<marker ng-repeat="a in b.armies"
                 position="{{a.lat}},{{a.lng}}"
                 draggable="true"
@@ -22,7 +22,7 @@
             </marker>
 		</div>
         <!-- Movimientos de los ejercitos -->
-        <shape name="polyline" ng-repeat="f in battle.frontlines"
+        <shape name="polyline" ng-repeat="f in $root.selectedBattle.frontlines"
             path="{{f.path}}"
             editable="true"
             stroke-color="{{f.color}}"

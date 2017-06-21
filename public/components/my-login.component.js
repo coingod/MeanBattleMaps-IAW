@@ -36,7 +36,7 @@ function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageS
 
     $scope.logOut = function(ev) {
       localStorageService.set('tokenjwt', null);
-      $scope.adminLogged=false;
+      $rootScope.adminLogged=false;
     }
 
     $scope.showAdvanced = function(ev) {

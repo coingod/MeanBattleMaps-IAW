@@ -18,6 +18,12 @@ md-table-container {
     max-height: 25vw;
 }
 
+.md-fab-speed-dial-bottom-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
 /* MAP
 ============================================================================= */
 /* Height: 100% de la altura de la pantalla. Width: Se ajusta para completar. */

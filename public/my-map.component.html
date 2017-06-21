@@ -34,19 +34,48 @@
 
 </ng-map>
 
+<div ng-cloak>
+    <md-fab-speed-dial md-direction="left" class="md-fling md-fab-speed-dial-bottom-right">
+        <md-fab-trigger>
+            <md-button aria-label="Add..." class="md-fab md-primary md-ink-ripple">
+                <md-icon class="material-icons">settings</md-icon>
+            </md-button>
+        </md-fab-trigger>
+
+        <md-fab-actions>
+
+            <!-- Boton de Editar Batalla -->
+            <md-button ng-click="toggleRight()" aria-label="Add User" class="md-fab md-ink-ripple md-mini">
+                <md-icon class="material-icons">edit</md-icon>
+            </md-button>
+
+            <!-- Boton de Lista de Batalla 
+            <md-button ng-click="showBattleList()" aria-label="Add Group" class="md-fab md-ink-ripple md-mini">
+                <md-icon class="material-icons">list</md-icon>
+            </md-button>
+            -->
+            <battle-list></battle-list>
+
+            <!-- Boton de Facebook Comments -->
+            <md-button ng-click="toggleLeft()" aria-label="Add Group" class="md-fab md-ink-ripple md-mini">
+                <md-icon class="material-icons">comment</md-icon>
+            </md-button>
+
+        </md-fab-actions>
+    </md-fab-speed-dial>
+</div>
+
 <!-- Boton de Lista de Batallas 
 <md-button ng-click="showBattleList()" class="md-fab md-fab-bottom-left md-ink-ripple md-primary" aria-label="Ver Lista de Mapas">
     <md-icon class="material-icons">list</md-icon>
 </md-button>
 -->
 
-<battle-list></battle-list>
-
-<!-- Boton de Agregar Batalla -->
+<!-- Boton de Agregar Batalla
 <md-button ng-click="toggleRight()" class="md-fab md-fab-bottom-right md-ink-ripple md-primary" aria-label="Agregar nueva Batalla">
     <md-icon class="material-icons">edit</md-icon>
 </md-button>
-
+-->
 <!-- Panel de Formulario para nueva Batalla -->
 <section layout="row" flex>
 

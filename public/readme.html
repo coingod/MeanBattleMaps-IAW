@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head><meta charset="utf-8"> </head>
+<body>
+	<h1> Mean Battle Maps </h1>
+	<h2> Qué es? </h2>
+	<p>
+    Mean Battle Maps es una aplicacion web que corre sobre cualquier navegador 
+    en la que es posible realizar mapas con informacion de batallas.
+    Con la utilizacion de la API de Google Maps, los usuarios visitantes podran ver 
+    detalles sobre las ubicaciones de ejercitos, las zonas de combate, frentes y movimientos de tropas.
+    La aplicacion cuenta con un listado de todas las batallas almacenadas por el administrador,
+    en donde se podra filtrar por nombre, conflicto belico, operacion, lugar, etc.
+    Tambien posible dejar comentarios sobre las batallas atraves de la plataforma de Facebook. 
+	</p>
+
+	<h3> Configuracion Inicial</h3>
+	<p>
+	Se debe ingresar a /setup para configurar el usuaio administrador.
+
+	<h2> Pasos para crear una batalla </h2>
+    <p>Para comenzar se debera hacer click en el boton de herramientas para poder ver las
+        opciones diposibles. Luego se selecciona el boton de Nueva Batalla.</p>
+	<h3> Informacion Basica </h3>
+	<p>
+	La primera etapa consta de completar la informacion basica de la batalla. 
+    Esto incluye al nombre con el cual se la conoce, la operacion de la cual formo parte,
+    el conflicto belico al cual pertenece, el lugar en donde sucedio, las fechas de inicio y finalizacion
+    de la batalla y por ultimo el resultado. Una vez se hayan completado estos datos se podra pasar
+    a la siguiente etapa.
+	</p>
+	<h3> Beligrantes </h3>
+	<p>
+	En esta etapa se mencionan cada una de las facciones involucradas en el conflicto. Lo unico que se
+    requiere es el nombre del estado, ciudad o alianza. Para cada uno luego se agregaran los ejercitos,
+    o grupos, con un icono representando la nacionalidad, un nombre y la fuerza de combate en cantidad de hombres.
+    Estos apareceran en el mapa y el administrador podra moverlos para ubicarlos en donde desea.
+	</p>
+	<h3> Marcadores </h3>
+	<p>En esta etapa se agregan marcadores en el mapa, los cuales indicarian la posicion de eventos o entidades reelevantes a la batalla.
+        Estos pueden ser de tipo Objetivo y Combate, este ultimo indica que en ese lugar hubo enfrentamientos.
+	</p>
+    <h3> Movimientos y Frente </h3>
+	<p>ESta es la etapa final, en donde se pueden agregar lineas y flechas al mapa para representar movimientos de tropas y los frentes de combate.
+        Al agregar una entrada se solicita un nombre y un color, asi tambien como el tipo (Flecha, Linea). Cuando se acepta el dialogo el usuario
+        entrara en modo de dibujo, donde podra ir haciendo click sobre el mapa y trazando la linea que desea. Una vez satisfecho podra termianr con click derecho.
+	</p>
+	<p>
+        En este punto el usuario ya cargo toda la informacion requerida, sin embargo podra seguir editando a gusto todo lo que desee. Una vez 
+        que haya finalizado solo debera hacer click en Guardar para almacenar el nuevo mapa.
+	</p>
+    
+	<h2> Librerías </h2>
+	<p>
+	Librerías utilizadas por la aplicación:
+	</p>
+	<p>
+	# jQuery - <a href="https://jquery.com/">https://jquery.com/</a> Para simplificar el manejo de HTML y eventos.
+	</p>
+	<p>
+	# jQuery UI - <a href="https://jqueryui.com/">https://jqueryui.com/</a> Manejo de rueda del mouse y barras de 
+	navegación
+	</p>
+	<p>
+	# Materialize - <a href="http://materializecss.com/">http://materializecss.com/</a> Utilizada para la realización de 
+	las interfaces.
+	</p>
+	<p>
+	# Require - <a href="http://requirejs.org/">http://requirejs.org/</a> Utilizada para simplificar la modularizacion, carga de librerias y velocidad de la aplicacion.
+	</p>
+	<h2> Agradecimientos </h2>
+	<p>
+	Los elementos utilizados para dibujar (edificios, caminos, etc), fueron
+	creados por un usuario del sitio Open Game Art: https://opengameart.org/users/kenney
+	</p>
+	<h2> Autores </h2>
+	<p> del Barrio, Ignacio </p>
+	<p> Menchi, Lucas </p>
+</body>

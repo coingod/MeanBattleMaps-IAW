@@ -5,7 +5,7 @@ angular.module('meanBattleMaps').component('myLogin', {
 
 //mapController.$inject = ['NgMap'];
  
-function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageService){
+function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageService, $rootScope){
     var ctrl = this; 
     //Chequeamos a ver si hay un token almacenado previamente
     //Si existe un token debemos chequear que todavía sea valido
@@ -15,16 +15,16 @@ function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageS
           console.log(response.data);
           if(response.data.success==false){
             //Token expiró, debe volver a autenticarse!
-            $scope.adminLogged=false;
+            $rootScope.adminLogged=false;
           }
           else{
             //We're in! Yaaaay
-            $scope.adminLogged=true;
+            $rootScope.adminLogged=true;
           }
         }, function errorCallback(response) {
           // called asynchronously if an error occurs
           // or server returns response with an error status.
-          $scope.adminLogged=false;
+          $rootScope.adminLogged=false;
           window.alert("Error del servidor.");
         });
     
@@ -58,7 +58,7 @@ function loginController($scope, NgMap, $mdDialog, $mdMenu, $http, localStorageS
               //Mostrar botón de edicion
               //TOKEN=response.data.token
               localStorageService.set('tokenjwt', response.data.token);
-              $scope.adminLogged=true;
+              $rootScope.adminLogged=true;
             }
             else{
               $mdDialog.show(

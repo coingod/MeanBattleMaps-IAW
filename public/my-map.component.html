@@ -7,6 +7,7 @@
 	<div ng-repeat="battle in $ctrl.battles">
 		<!-- Zonas de combate -->
 		<marker ng-repeat="m in $root.selectedBattle.markers" 
+            ng-model="m"
 			position="{{m.lat}},{{m.lng}}"
             draggable="true"
 			title="{{m.title}}"
@@ -15,6 +16,7 @@
         <!-- Ejercitos involucrados -->
 		<div ng-repeat="b in $root.selectedBattle.belligerents">
 			<marker ng-repeat="a in b.armies"
+                ng-model="a"
                 position="{{a.lat}},{{a.lng}}"
                 draggable="true"
                 title="({{b.faction}}) {{a.title}}"
@@ -23,6 +25,7 @@
 		</div>
         <!-- Movimientos de los ejercitos -->
         <shape name="polyline" ng-repeat="f in $root.selectedBattle.frontlines"
+            ng-model="f"
             path="{{f.path}}"
             editable="true"
             stroke-color="{{f.color}}"
@@ -43,7 +46,7 @@
 <battle-list></battle-list>
 
 <!-- Boton de Agregar Batalla -->
-<md-button ng-click="toggleRight()" class="md-fab md-fab-bottom-right md-ink-ripple md-primary" aria-label="Agregar nueva Batalla">
+<md-button ng-click="toggleRight()" ng-show="$root.adminLogged" class="md-fab md-fab-bottom-right md-ink-ripple md-primary" aria-label="Agregar nueva Batalla">
     <md-icon class="material-icons">edit</md-icon>
 </md-button>
 

@@ -3,7 +3,7 @@
 
 <v-accordion class="vAccordion--default" multiple>
 
-    <v-pane ng-repeat="b in battle.belligerents" expanded>
+    <v-pane ng-repeat="b in $root.selectedBattle.belligerents" expanded>
         <v-pane-header>
             {{b.faction}}
         </v-pane-header>

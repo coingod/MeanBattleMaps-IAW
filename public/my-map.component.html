@@ -54,12 +54,12 @@
         <md-fab-actions>
 
             <!-- Boton de Crear Batalla -->
-            <md-button ng-click="newBattle()" ng-show="$root.adminLogged" aria-label="Agregar Batalla" class="md-fab md-ink-ripple md-mini">
+            <md-button ng-click="newBattle()" ng-disabled="!$root.adminLogged" aria-label="Agregar Batalla" class="md-fab md-ink-ripple md-mini">
                 <md-icon class="material-icons">add</md-icon>
             </md-button>
 
             <!-- Boton de Editar Batalla -->
-            <md-button ng-click="toggleRight()" ng-show="$root.adminLogged" aria-label="Editar Batalla" class="md-fab md-ink-ripple md-mini">
+            <md-button ng-click="toggleRight()" ng-disabled="!$root.adminLogged" aria-label="Editar Batalla" class="md-fab md-ink-ripple md-mini">
                 <md-icon class="material-icons">edit</md-icon>
             </md-button>
 

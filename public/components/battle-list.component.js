@@ -35,6 +35,9 @@ function battleListController($http, $scope, $mdBottomSheet, $rootScope){
 
       $scope.selected = [];
       $scope.selectBattle=function(obj){
+        console.log("rootScope before select");
+        console.log($rootScope.selectedBattle);
+
         $rootScope.selectedBattle=obj;
         console.log("Estoy en root!!");
         console.log($rootScope.selectedBattle);

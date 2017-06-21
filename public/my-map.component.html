@@ -34,10 +34,13 @@
 
 </ng-map>
 
-<!-- Boton de Lista de Batallas -->
+<!-- Boton de Lista de Batallas 
 <md-button ng-click="showBattleList()" class="md-fab md-fab-bottom-left md-ink-ripple md-primary" aria-label="Ver Lista de Mapas">
     <md-icon class="material-icons">list</md-icon>
 </md-button>
+-->
+
+<battle-list></battle-list>
 
 <!-- Boton de Agregar Batalla -->
 <md-button ng-click="toggleRight()" class="md-fab md-fab-bottom-right md-ink-ripple md-primary" aria-label="Agregar nueva Batalla">
@@ -56,23 +59,4 @@
 
 </section>
 
-<!-- MOVER ESTO A UN MODULO INDEPENDIENTE -->
-<!-- Boton de Facebook Comments -->
-<md-button ng-click="toggleLeft()" class="md-fab md-fab-top-left md-ink-ripple md-primary" aria-label="Comentarios">
-    <md-icon class="material-icons">comment</md-icon>
-</md-button>
-<!-- Facebook Comments -->
-<section layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4">
-        <md-toolbar class="md-theme-indigo">
-            <div class="md-toolbar-tools">
-                <h1 flex>Comentarios</h1>
-                <md-button class="md-icon-button" ng-click="toggleLeft()" aria-label="Settings">
-                    <md-icon class="material-icons">close</md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-        <div id="fb-root"></div>
-        <div class="fb-comments" data-width="100%" data-href="{{fbhref}}" data-numposts="5"></div>   
-    </md-sidenav>
-</section>
+<facebook-comments></facebook-comments>

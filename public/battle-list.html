@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody md-body>
-            <tr md-row md-select="battle" md-auto-select ng-repeat="battle in items | orderBy:query.order | filter:$ctrl.input">
+            <tr md-row md-select="battle" md-auto-select ng-repeat="battle in items | orderBy:query.order | filter:$ctrl.input" ng-click="selectBattle(battle)">
                 <td md-cell>{{battle.name}}</td>
                 <td md-cell>{{battle.operation}}</td>
                 <td md-cell>{{battle.conflict}}</td>

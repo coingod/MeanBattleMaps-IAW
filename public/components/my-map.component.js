@@ -5,7 +5,7 @@ angular.module('meanBattleMaps').component('myMap', {
 
 //mapController.$inject = ['NgMap'];
 
-function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $mdBottomSheet){
+function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $mdBottomSheet, $rootScope){
     var ctrl = this;
     //En modo de creacion de lineas, esta variable indica el estado del path
     var currentLine = {};
@@ -548,58 +548,6 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
       $scope.confirm = function() {
         $mdDialog.hide($scope.formData);
-      };
-    }
-
-    //UI Lista de Batallas
-    $scope.showBattleList = function() {
-      $scope.alert = '';
-      $mdBottomSheet.show({
-        templateUrl: 'battle-list.html',
-        controller: BattleListCtrl
-      }).then(function(clickedItem) {
-        $scope.alert = clickedItem['name'] + ' clicked!';
-      }).catch(function(error) {
-        // User clicked outside or hit escape
-      });
-    };
-
-    function BattleListCtrl($scope, $mdBottomSheet) {
-      $scope.items = [];
-      
-      //Chequeamos las batallas cargadas en la db
-      $http.get('/api/getbattles').then(function successCallback(response) {
-          console.log(response);
-          $scope.items = response.data;
-        }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        window.alert("Error del servidor.");
-      });
-
-      $scope.selected = [];
-      
-      $scope.query = {
-        order: 'name',
-        limit: 5,
-        page: 1
-      };
-      
-      function success(desserts) {
-        $scope.desserts = desserts;
-      }
-      /*
-      $scope.getDesserts = function () {
-        $scope.promise = $nutrition.desserts.get($scope.query, success).$promise;
-      };
-      */
-      $scope.close = function() {
-        $mdBottomSheet.hide();
-      };
-
-      $scope.listItemClick = function($index) {
-        var clickedItem = $scope.items[$index];
-        $mdBottomSheet.hide(clickedItem);
       };
     }
 }

@@ -11,12 +11,12 @@
 						<i class="material-icons">menu</i>
 					</md-button>
 					<md-menu-content>
-					<md-menu-item ng-show="!adminLogged">
+					<md-menu-item ng-show="!$root.adminLogged">
 						<md-button class="md-button" aria-label="Login"  ng-click="showAdvanced()">
 							Login
 						</md-button>
 					</md-menu-item>
-					<md-menu-item  ng-show="adminLogged">
+					<md-menu-item  ng-show="$root.adminLogged">
 						<md-button class="md-button" aria-label="Logout" ng-click="logOut()" >
 							Logout
 						</md-button>

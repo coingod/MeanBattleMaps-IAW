@@ -3,43 +3,43 @@
 
 <md-input-container class="md-block">
     <label>Nombre</label>
-    <input ng-model="battle.name" required name="name">
+    <input ng-model="$root.selectedBattle.name" required name="name">
     <div class="hint">Nombre de la batalla</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Operacion</label>
-    <input ng-model="battle.operation">
+    <input ng-model="$root.selectedBattle.operation">
     <div class="hint">Operacion a la cual pertenecio</div>
 </md-input-container>
 
 <md-input-container class="md-block" required>
     <label>Conflicto</label>
-    <input ng-model="battle.conflict">
+    <input ng-model="$root.selectedBattle.conflict">
     <div class="hint">Conflicto belico al cual pertenecio</div>
 </md-input-container>
 
 <md-input-container class="md-block" required>
     <label>Locacion</label>
-    <input ng-model="battle.location">
+    <input ng-model="$root.selectedBattle.location">
     <div class="hint">Ciudad, Region y/o Pais donde sucedio</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Comienzo</label>
-    <md-datepicker ng-model="battle.start" md-current-view="year"></md-datepicker>
+    <md-datepicker ng-model="$root.selectedBattle.start" md-current-view="year"></md-datepicker>
     <div class="hint">Fecha de comienzo</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Finalizacion</label>
-    <md-datepicker ng-model="battle.end" md-current-view="year"></md-datepicker>
+    <md-datepicker ng-model="$root.selectedBattle.end" md-current-view="year"></md-datepicker>
     <div class="hint">Fecha de finalizacion</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Resultado</label>
-    <input ng-model="battle.result">
+    <input ng-model="$root.selectedBattle.result">
     <div class="hint">Cual fue el Resultado?</div>
 </md-input-container>
 

@@ -2,7 +2,7 @@
 <md-subheader class="md-primary">Movimientos y Frente</md-subheader>
 
 <md-list>
-    <md-list-item ng-repeat="f in battle.frontlines" ng-click="doPrimaryAction($event)" class="noright">
+    <md-list-item ng-repeat="f in $root.selectedBattle.frontlines" ng-click="doPrimaryAction($event)" class="noright">
         <md-icon 
             class="material-icons"
             ng-style="{color: '{{f.color}}', 'font-size': 36 + 'px', height: 36 + 'px'}"

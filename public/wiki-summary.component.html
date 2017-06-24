@@ -1,0 +1,44 @@
+<md-bottom-sheet class="md-list md-has-header">
+
+    <md-toolbar class="md-theme-indigo">
+        <div class="md-toolbar-tools">
+            <h1 flex>Información de {{$root.selectedBattle.name}}</h1>
+            <md-button class="md-icon-button" ng-click="close()" aria-label="Settings">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item><i class="material-icons">group_work</i>    <div class="md-list-item-text">
+            <strong>Operacion:</strong> {{$root.selectedBattle.operation}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">report_problem</i>    <div class="md-list-item-text">
+            <strong>Conflicto:</strong> {{$root.selectedBattle.conflict}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">date_range</i>    <div class="md-list-item-text">
+            <strong>Fecha de Inicio:</strong> {{$root.selectedBattle.start}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">date_range</i>    <div class="md-list-item-text">
+            <strong>Fecha de finalización:</strong> {{$root.selectedBattle.end}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">gps_fixed</i>    <div class="md-list-item-text">
+            <strong>Lugar:</strong> {{$root.selectedBattle.location}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">check_circle</i>    <div class="md-list-item-text">
+            <strong>Resultado:</strong> {{$root.selectedBattle.result}}
+            </div>
+        </md-list-item>
+        <md-list-item><i class="material-icons">info_outline</i>    <div class="md-list-item-text">
+            <strong>Resumen:</strong> {{datos}}
+            </div>
+        </md-list-item>
+    </md-list>
+
+
+</md-bottom-sheet>

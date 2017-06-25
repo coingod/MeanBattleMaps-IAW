@@ -11,154 +11,30 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     var currentLine = {};
     //Activa/desactiva el modo dibujado de paths
     ctrl.drawingPath = false;
-    
-    //Batalla de prueba
-    var battle = {};
-    battle.name = "Dia D";
-    battle.operation = "Overlord";
-    battle.conflict = "Segunda Guerra Mundial";
-    battle.start = new Date(1944, 6, 6);
-    battle.end = new Date(1944, 6, 6);
-    battle.location = "Normandia, Francia";
-    battle.result = "Victoria Aliada";
-    battle.markers = [
-        {id:0, title: "Playa Utah", icon:{url:"/assets/img/icons/battle.png", size: [32, 32], origin: [0,0], anchor: [16, 16]}, lat: 49.4222982, lng: -1.1968746, casualties: 197},
-        {id:1, title: "Playa Omaha", icon:{url:"/assets/img/icons/battle.png", size: [32, 32], origin: [0,0], anchor: [16, 16]}, lat: 49.3726418, lng: -0.9077147, casualties: 2000},
-        {id:2, title: "Playa Gold", icon:{url:"/assets/img/icons/battle.png", size: [32, 32], origin: [0,0], anchor: [16, 16]}, lat: 49.3319829, lng: -0.5778482, casualties: 1000},
-        {id:3, title: "Playa Juno", icon:{url:"/assets/img/icons/battle.png", size: [32, 32], origin: [0,0], anchor: [16, 16]}, lat: 49.3260474, lng: -0.4601456, casualties: 961},
-        {id:4, title: "Playa Sword", icon:{url:"/assets/img/icons/battle.png", size: [32, 32], origin: [0,0], anchor: [16, 16]}, lat: 49.3214565, lng: -0.3907291, casualties: 1000},
-    ];
-    battle.belligerents = [
-        {
-          faction: "Aliados",
-          armies:
-          [
-            {id:0, title: "4º Division", icon:"us", lat: 49.5222982, lng: -0.9968746, strength: 23300},
-            {id:1, title: "1º y 29º Division", icon:"us", lat: 49.4726418, lng: -0.8077147, strength: 34230},
-            {id:2, title: "50º Division", icon:"uk", lat: 49.4319829, lng: -0.5278482, strength: 25000},
-            {id:3, title: "3º Division", icon:"ca", lat: 49.4260474, lng: -0.4101456, strength: 21400},
-            {id:4, title: "3º Division", icon:"uk", lat: 49.4214565, lng: -0.3007291, strength: 28850}
-          ],
-          strength: 156000,
-          casualties: 10000
-        },
-        {
-          faction: "Eje",
-          armies:
-          [
-            {id:0, title: "352º Division Infanteria", icon:"ge", lat: 49.2222982, lng: -1.1968746, strength: 0},
-            {id:1, title: "VII Ejercito", icon:"ge", lat: 49.0726418, lng: -0.9077147, strength: 0},
-            {id:2, title: "716º Division Infanteria", icon:"ge", lat: 49.1319829, lng: -0.5778482, strength: 0},
-            {id:3, title: "XV Ejercito", icon:"ge", lat: 49.1060474, lng: -0.3601456, strength: 0},
-            {id:4, title: "21º Division Panzer", icon:"ge", lat: 49.1214565, lng: -0.3007291, strength: 0}
-          ],
-          strength: 50350,
-          casualties: 6500
-        }
-    ];
-    battle.frontlines = [
-        {
-          id: 0,
-          avatar:"trending_up", 
-          title:"Desembarco 1", 
-          color:"red",
-          path: [
-            [49.5122982,-1.0068746], 
-            [49.4412982, -1.1668746]
-          ], 
-          icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]
-        },
-        {
-          id: 1,
-          avatar:"trending_up", 
-          title:"Desembarco 2",
-          color:"red",
-          path: [
-            [49.4726418, -0.8077147], 
-            [49.3726418, -0.9077147]
-          ], 
-          icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]
-        },
-        {
-          id: 2,
-          avatar:"trending_up", 
-          title:"Desembarco 3", 
-          color:"red",
-          path: [
-            [49.4319829, -0.5278482], 
-            [49.3319829, -0.5778482]
-          ], 
-          icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]
-        },
-        {
-          id: 3,
-          avatar:"trending_up", 
-          title:"Desembarco 4", 
-          color:"red",
-          path: [
-            [49.4260474, -0.4101456],
-            [49.3260474, -0.4601456]
-          ], 
-          icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]
-        },
-        {
-          id: 4,
-          avatar:"trending_up", 
-          title:"Desembarco 5", 
-          color:"red",
-          path: [
-            [49.4214565, -0.3007291], 
-            [49.3214565, -0.3907291]
-          ], 
-          icons: [{icon:{path: 'FORWARD_CLOSED_ARROW'},offset: '100%'}]
-        },
-        {
-          id: 5,
-          avatar:"show_chart", 
-          title:"12 de Junio de 1944",
-          color:"red",
-          path: [
-            [49.463661554130816, -1.231842041015625],
-            [49.426160395179274, -1.327972412109375],
-            [49.348388163438194, -1.344451904296875],
-            [49.30811283252169, -1.201629638671875],
-            [49.283035996995174, -1.10687255859375],
-            [49.174521518067834, -0.965423583984375],
-            [49.10444366870733, -0.77178955078125],
-            [49.20683172516032, -0.60699462890625],
-            [49.2032427441791, -0.330963134765625],
-            [49.222081988283755, -0.240325927734375],
-            [49.29109779978075, -0.24169921875]
-          ]
-        },
-        {
-          id: 6,
-          avatar:"show_chart", 
-          title:"25 de Junio de 1944",
-          color:"blue",
-          path: [
-            [49.257050109522424, -1.669921875],
-            [49.19426915204543, -1.34033203125],
-            [49.08106236432073, -1.1370849609375],
-            [49.11702904077932, -0.92010498046875],
-            [49.0729662700941, -0.800628662109375],
-            [49.10893881094389, -0.560302734375],
-            [49.0945529223241, -0.384521484375],
-            [49.112534631533656, -0.243072509765625],
-            [49.21670007971534, -0.20050048828125],
-            [49.29199347427707, -0.199127197265625]
-          ]
-        },
-    ]
 
-    //Batalla acutal
-    $scope.battle = battle;
+    NgMap.getMap().then(function (map) {
+      ctrl.map = map;
+      $scope.centerView();
+    });  
     
+    //Batalla Actual
+    var battle = {};
     $rootScope.selectedBattle=battle;
 
-    //ID Hardcodeado
-    var x='5949b10b3d010423ecb55361';  
-    $scope.updateBattle = function(ev) {
+    //Consultamos al servidor por la lista de batallas
+    $http.get('/api/getbattles').then(function successCallback(response) {
+      if(response.data.length) {
+        //Si hay Batallas en la BD cargamos la primera como default
+        battle = response.data[0];
+        $rootScope.selectedBattle=battle;
+        //$scope.centerView();
+      }
+      }, function errorCallback(response) {
+      window.alert("Error del servidor.");
+    });
+
+
+    $scope.updateBattle = function(id) {
         /*
         $http.get('/api/battle/'+x).then(function successCallback(response) {
             console.log("Antes del update!");
@@ -166,17 +42,17 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
           }, function errorCallback(response) {window.alert("Error del servidor.");});
           */
         //UPdateamos
-        $http.post('/api/updatebattle/'+x, {"battle": battle}).then(function successCallback(response) {
+        $http.post('/api/updatebattle/'+id, {"battle": battle}).then(function successCallback(response) {
           console.log(response.data);
           $mdDialog.show(
             $mdDialog.alert()
               //.parent(angular.element(document.querySelector('#popupContainer')))
               .clickOutsideToClose(true)
-              .title('Batalla Updateada')
+              .title('Batalla Actualizada')
               .textContent('La Batalla ha sido actualizada con exito.')
-              .ariaLabel('Batalla Updateada')
+              .ariaLabel('Batalla Actualizada')
               .ok('Confirmar')
-              .targetEvent(ev)
+              //.targetEvent(ev)
           );
         }, function errorCallback(response) {
           // called asynchronously if an error occurs or server returns response with an error status.
@@ -195,6 +71,12 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     
     //Envia al servidor la informacion de una batalla nueva para su almacenamiento
     $scope.saveBattle = function(ev) {
+      //Si tenemos una id, quiere decir que estamos editando una batalla
+      if("_id" in battle){
+        $scope.updateBattle(battle._id);
+        return;
+      }
+      //Sino la batalla es nueva y procedemos a guardarla en el servidor 
       $http.post('/api/loadbattle', {"battle": battle}).then(function successCallback(response) {
         $mdDialog.show(
           $mdDialog.alert()
@@ -212,38 +94,47 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
       });
     };
 
-    //Buscamos X batalla en la db :)    
-    //El id este se obtiene pidiendole al objeto Battle el atributo "_id". Lo genera mongo automaticamente
-    $http.get('/api/battle/'+x).then(function successCallback(response) {
-      console.log(response);
-      }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        window.alert("Error del servidor.");
-      });
-
     //Centramos la camara en la Batalla
-    var bounds = new google.maps.LatLngBounds();
-    for (var i=0; i<battle.markers.length; i++) {
-      var latlng = new google.maps.LatLng(battle.markers[i].lat, battle.markers[i].lng);
-      bounds.extend(latlng);
-    }
-    for (var i=0; i<battle.belligerents.length; i++) {
-      for (var j=0; j<battle.belligerents[i].armies.length; j++) {
-        var latlng = new google.maps.LatLng(battle.belligerents[i].armies[j].lat, battle.belligerents[i].armies[j].lng);
+    $scope.centerView = function () {
+      var bounds = new google.maps.LatLngBounds();
+      for (var i=0; i<battle.markers.length; i++) {
+        var latlng = new google.maps.LatLng(battle.markers[i].lat, battle.markers[i].lng);
         bounds.extend(latlng);
       }
-    }
-
-    NgMap.getMap().then(function (map) {
-        ctrl.map = map;
-        ctrl.map.setCenter(bounds.getCenter());
-        ctrl.map.fitBounds(bounds);
-    });    
+      for (var i=0; i<battle.belligerents.length; i++) {
+        for (var j=0; j<battle.belligerents[i].armies.length; j++) {
+          var latlng = new google.maps.LatLng(battle.belligerents[i].armies[j].lat, battle.belligerents[i].armies[j].lng);
+          bounds.extend(latlng);
+        }
+      }
+      ctrl.map.setCenter(bounds.getCenter());
+      ctrl.map.fitBounds(bounds);
+    }  
 
     ctrl.getRadius = function(num) {
         return Math.sqrt(num);
     };
+
+    $scope.updateMarkerPosition = function(event, index){
+      battle.markers[index].lat = event.latLng.lat();
+      battle.markers[index].lng = event.latLng.lng();
+      //console.log(battle.markers[index]);
+    }
+    $scope.updateArmyPosition = function(event, faction_index, army_index){
+      battle.belligerents[faction_index].armies[army_index].lat = event.latLng.lat();
+      battle.belligerents[faction_index].armies[army_index].lng = event.latLng.lng();
+      //console.log(battle.belligerents[faction_index]);
+    }
+    /*
+    $scope.updatePath = function(event) {
+      console.log(event);
+      var vertex = event.vertex;
+      var edge = event.edge;
+      var latLng = event.latLng;
+      console.log("Event: v:"+vertex+" e:"+edge+" latlng:"+latLng.lat()+","+latLng.lng());
+    };
+    */
+
     /*
     ctrl.toggleBounce = function() {
       if (this.getAnimation() != null) {
@@ -262,9 +153,13 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     $scope.toggleRight = buildToggler('right');
 
     $scope.newBattle = function(ev) {
-      battle = {};
-      $rootScope.selectedBattle = {};
-      console.log($rootScope.selectedBattle);
+      battle = {
+        markers: [],
+        belligerents: [],
+        frontlines: []
+      };
+      $rootScope.selectedBattle = battle;
+      //console.log($rootScope.selectedBattle);
       $mdSidenav('right').toggle();
     };
 

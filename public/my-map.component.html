@@ -1,3 +1,6 @@
+<!-- Debug del modelo -->
+<!--<div>{{$root.selectedBattle.belligerents}}</div>-->
+
 <ng-map center="0, 0" zoom="3" disable-default-u-i="true" 
     on-click="$ctrl.drawPath()" 
     on-rightclick="$ctrl.finishDrawPath()" 
@@ -7,27 +10,26 @@
 	<div>
 		<!-- Zonas de combate -->
 		<marker ng-repeat="m in $root.selectedBattle.markers" 
-            ng-model="m"
 			position="{{m.lat}},{{m.lng}}"
-            draggable="true"
+            draggable="{{$root.adminLogged}}"
+            on-dragend="updateMarkerPosition($event, index)"
 			title="{{m.title}}"
 			icon="{{m.icon}}">
 		</marker>
         <!-- Ejercitos involucrados -->
 		<div ng-repeat="b in $root.selectedBattle.belligerents">
 			<marker ng-repeat="a in b.armies"
-                ng-model="a"
                 position="{{a.lat}},{{a.lng}}"
-                draggable="true"
+                draggable="{{$root.adminLogged}}"
+                on-dragend="updateArmyPosition($event, parent.$index, $index)"
                 title="({{b.faction}}) {{a.title}}"
                 icon="/assets/img/flags/map/{{a.icon}}.png">
             </marker>
 		</div>
         <!-- Movimientos de los ejercitos -->
         <shape name="polyline" ng-repeat="f in $root.selectedBattle.frontlines"
-            ng-model="f"
             path="{{f.path}}"
-            editable="true"
+            editable="false"
             stroke-color="{{f.color}}"
             stroke-opacity="0.5"
             stroke-weight="10"
@@ -36,12 +38,6 @@
 	</div>
 
 </ng-map>
-
-<!-- Debug del modelo
-<pre>
-    {{$root.selectedBattle}}
-</pre>
--->
 
 <div ng-cloak>
     <md-fab-speed-dial md-direction="left" class="md-fling md-fab-speed-dial-bottom-right">

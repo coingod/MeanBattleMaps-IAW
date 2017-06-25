@@ -1,17 +1,29 @@
-angular.module('meanBattleMaps').component('battleList', {
-    templateUrl:'../battle-list.component.html',
-    controller: battleListController
+angular.module('meanBattleMaps').component('bottomSheet', {
+    templateUrl:'../bottom-sheet.component.html',
+    controller: bottomSheetController
   });
 
 //mapController.$inject = ['NgMap'];
 
-function battleListController($http, $scope, $mdBottomSheet, $rootScope){
+function bottomSheetController($http, $scope, $mdBottomSheet, $rootScope){
     var ctrl = this;
     //UI Lista de Batallas
     $scope.showBattleList = function() {
       $scope.alert = '';
       $mdBottomSheet.show({
-        templateUrl:'../wiki-summary.component.html', // '../battle-list.html',
+        templateUrl: '../battle-list.html',
+        controller: BattleListCtrl
+      })/*.then(function(clickedItem) {
+        $scope.alert = clickedItem['name'] + ' clicked!';
+      }).catch(function(error) {
+        // User clicked outside or hit escape
+      })*/;
+    };
+
+     $scope.showBattleInfo = function() {
+      $scope.alert = '';
+      $mdBottomSheet.show({
+        templateUrl:'../wiki-summary.html', // '../battle-list.html',
         controller: wikiController // BattleListCtrl
       })/*.then(function(clickedItem) {
         $scope.alert = clickedItem['name'] + ' clicked!';

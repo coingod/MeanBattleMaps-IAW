@@ -65,11 +65,13 @@ app.get('/setup', function(req, res) {
 var apiRoutes = express.Router(); 
 
 apiRoutes.post('/loadbattle', function(req, res) {
-	console.log(req.body.battles);
-	Battle.collection.insertOne(req.body.battle, function(err,r) {
- 		 console.log("Batalla: "+req.body.battle.name+" insertada en la Base de Datos");
+  //Insertamos la batalla
+	Battle.collection.insertOne(req.body.battle, function(err,r) {});
+  Battle.findOne({name: req.body.battle.name}, function(err, battle) {
+		console.log("ID que devuelvo: "+battle._id)
+		res.json({id: battle._id});
 	});
-	res.json({success:true, message:"Llego el mapa :)"});
+
 });
 
 apiRoutes.post('/updatebattle/:id', function(req, res) {

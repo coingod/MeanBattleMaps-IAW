@@ -103,8 +103,8 @@ apiRoutes.get('/loaddefault',function(req,res){
     battle.name = "Dia D";
     battle.operation = "Overlord";
     battle.conflict = "Segunda Guerra Mundial";
-    battle.start = new Date(1944, 6, 6);
-    battle.end = new Date(1944, 6, 6);
+    battle.start = {year: 1944, month: 6, day: 6};//new Date(1944, 6, 6);
+    battle.end = {year: 1944, month: 6, day: 6};//new Date(1944, 6, 6);
     battle.location = "Normandia, Francia";
     battle.result = "Victoria Aliada";
     battle.markers = [

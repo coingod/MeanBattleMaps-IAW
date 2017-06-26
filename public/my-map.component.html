@@ -1,5 +1,5 @@
 <!-- Debug del modelo -->
-<!--<div>{{$root.selectedBattle.belligerents}}</div>-->
+<!--<div>{{$root.selectedBattle.belligerents | json}}</div>-->
 
 <ng-map center="0, 0" zoom="3" disable-default-u-i="true" 
     on-click="$ctrl.drawPath()" 
@@ -9,7 +9,7 @@
 	<!-- Batallas -->
 	<div>
 		<!-- Zonas de combate -->
-		<marker ng-repeat="m in $root.selectedBattle.markers" 
+		<marker ng-repeat="m in $root.battle.markers" 
 			position="{{m.lat}},{{m.lng}}"
             draggable="{{$root.adminLogged}}"
             on-dragend="updateMarkerPosition($event, index)"
@@ -17,7 +17,7 @@
 			icon="{{m.icon}}">
 		</marker>
         <!-- Ejercitos involucrados -->
-		<div ng-repeat="b in $root.selectedBattle.belligerents">
+		<div ng-repeat="b in $root.battle.belligerents">
 			<marker ng-repeat="a in b.armies"
                 position="{{a.lat}},{{a.lng}}"
                 draggable="{{$root.adminLogged}}"
@@ -27,7 +27,7 @@
             </marker>
 		</div>
         <!-- Movimientos de los ejercitos -->
-        <shape name="polyline" ng-repeat="f in $root.selectedBattle.frontlines"
+        <shape name="polyline" ng-repeat="f in $root.battle.frontlines"
             path="{{f.path}}"
             editable="false"
             stroke-color="{{f.color}}"

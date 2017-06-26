@@ -23,6 +23,7 @@
                     <th md-column md-order-by="operation"><span>Operacion</span></th>
                     <th md-column md-order-by="conflict">Conflicto</th>
                     <th md-column md-order-by="location">Locacion</th>
+                    <th md-column md-order-by="date">Fecha</th>
                     <th md-column md-order-by="result">Resultado</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                 <td md-cell>{{battle.operation}}</td>
                 <td md-cell>{{battle.conflict}}</td>
                 <td md-cell>{{battle.location}}</td>
+                <td md-cell>{{battle.start.year}}</td>
                 <td md-cell>{{battle.result}}</td>
             </tr>
             </tbody>

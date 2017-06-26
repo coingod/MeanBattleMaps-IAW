@@ -2,7 +2,7 @@
 <md-subheader class="md-primary">Marcadores</md-subheader>
 
 <md-list>
-    <md-list-item ng-repeat="m in $root.selectedBattle.markers" ng-click="doPrimaryAction($event)" class="noright">
+    <md-list-item ng-repeat="m in $root.battle.markers" ng-click="doPrimaryAction($event)" class="noright">
         <img alt="{{ m.title }}" ng-src="{{ m.icon.url }}" class="md-avatar" />
         <p>{{ m.title }}</p>
         <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="deleteMarker($event, m.id)">delete</md-icon>

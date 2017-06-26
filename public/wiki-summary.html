@@ -2,7 +2,7 @@
 
     <md-toolbar class="md-theme-indigo">
         <div class="md-toolbar-tools">
-            <h1 flex>Información de {{$root.selectedBattle.name}}</h1>
+            <h1 flex>Información de {{$root.battle.name}}</h1>
             <md-button class="md-icon-button" ng-click="close()" aria-label="Settings">
                 <md-icon class="material-icons">close</md-icon>
             </md-button>
@@ -11,27 +11,27 @@
 
     <md-list>
         <md-list-item><i class="material-icons">group_work</i>    <div class="md-list-item-text">
-            <strong>Operacion:</strong> {{$root.selectedBattle.operation}}
+            <strong>Operacion:</strong> {{$root.battle.operation}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">report_problem</i>    <div class="md-list-item-text">
-            <strong>Conflicto:</strong> {{$root.selectedBattle.conflict}}
+            <strong>Conflicto:</strong> {{$root.battle.conflict}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">date_range</i>    <div class="md-list-item-text">
-            <strong>Fecha de Inicio:</strong> {{$root.selectedBattle.start}}
+            <strong>Fecha de Inicio:</strong> {{$root.battle.start.toLocaleDateString()}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">date_range</i>    <div class="md-list-item-text">
-            <strong>Fecha de finalización:</strong> {{$root.selectedBattle.end}}
+            <strong>Fecha de finalización:</strong> {{$root.battle.end.toLocaleDateString()}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">gps_fixed</i>    <div class="md-list-item-text">
-            <strong>Lugar:</strong> {{$root.selectedBattle.location}}
+            <strong>Lugar:</strong> {{$root.battle.location}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">check_circle</i>    <div class="md-list-item-text">
-            <strong>Resultado:</strong> {{$root.selectedBattle.result}}
+            <strong>Resultado:</strong> {{$root.battle.result}}
             </div>
         </md-list-item>
         <md-list-item><i class="material-icons">info_outline</i>    <div class="md-list-item-text">

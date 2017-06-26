@@ -34,7 +34,7 @@ function bottomSheetController($http, $scope, $mdBottomSheet, $rootScope){
 
     function wikiController($http, $rootScope, $scope){
     //Probamos Api de Wikipedia+
-      $http.jsonp('http://es.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles='+$rootScope.selectedBattle.name+'&callback=JSON_CALLBACK').success(function(response) {
+      $http.jsonp('http://es.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles='+$rootScope.battle.name+'&callback=JSON_CALLBACK').success(function(response) {
           var nropagina=Object.keys(response.query.pages)[0];
           console.log(nropagina);
           console.log(response.query.pages[nropagina]);
@@ -52,22 +52,18 @@ function bottomSheetController($http, $scope, $mdBottomSheet, $rootScope){
       
       //Chequeamos las batallas cargadas en la db
       $http.get('/api/getbattles').then(function successCallback(response) {
-          console.log(response);
+          //console.log(response);
           $scope.items = response.data;
         }, function errorCallback(response) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         window.alert("Error del servidor.");
       });
-
+      
       $scope.selected = [];
       $scope.selectBattle=function(obj){
-        console.log("rootScope before select");
-        console.log($rootScope.selectedBattle);
-
-        $rootScope.selectedBattle=obj;
-        console.log("Estoy en root!!");
-        console.log($rootScope.selectedBattle);
+        //$rootScope.selectedBattle=obj;
+        $rootScope.setBattle(obj);
       }
       $scope.query = {
         order: 'name',

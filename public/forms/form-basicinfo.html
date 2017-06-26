@@ -3,48 +3,52 @@
 
 <md-input-container class="md-block">
     <label>Nombre</label>
-    <input ng-model="$root.selectedBattle.name" required name="name">
+    <input ng-model="$root.battle.name" required name="name">
     <div class="hint">Nombre de la batalla</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Operacion</label>
-    <input ng-model="$root.selectedBattle.operation">
+    <input ng-model="$root.battle.operation" required name="operation">
     <div class="hint">Operacion a la cual pertenecio</div>
 </md-input-container>
 
 <md-input-container class="md-block" required>
     <label>Conflicto</label>
-    <input ng-model="$root.selectedBattle.conflict">
+    <input ng-model="$root.battle.conflict" required name="conflict">
     <div class="hint">Conflicto belico al cual pertenecio</div>
 </md-input-container>
 
 <md-input-container class="md-block" required>
     <label>Locacion</label>
-    <input ng-model="$root.selectedBattle.location">
+    <input ng-model="$root.battle.location" required name="location">
     <div class="hint">Ciudad, Region y/o Pais donde sucedio</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Comienzo</label>
-    <md-datepicker ng-model="$root.selectedBattle.start" md-current-view="year"></md-datepicker>
+    <md-datepicker ng-model="$root.battle.start" md-current-view="year" required name="start"></md-datepicker>
     <div class="hint">Fecha de comienzo</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Finalizacion</label>
-    <md-datepicker ng-model="$root.selectedBattle.end" md-current-view="year"></md-datepicker>
+    <md-datepicker ng-model="$root.battle.end" md-current-view="year" required name="end"></md-datepicker>
     <div class="hint">Fecha de finalizacion</div>
 </md-input-container>
 
 <md-input-container class="md-block">
     <label>Resultado</label>
-    <input ng-model="$root.selectedBattle.result">
+    <input ng-model="$root.battle.result" required name="result">
     <div class="hint">Cual fue el Resultado?</div>
 </md-input-container>
 
 <div layout-gt-xs="row">
-    <md-button ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+    <!-- ESto deberia estar hecho con un controlador o directiva, pero bueno. No time. -->
+    <md-button ng-if="form.$valid" ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+        Siguiente
+    </md-button>
+    <md-button ng-if="!form.$valid" ng-disabled="true" class="md-raised md-primary" flex-gt-xs>
         Siguiente
     </md-button>
 </div>

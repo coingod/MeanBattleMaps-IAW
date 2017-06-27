@@ -67,12 +67,10 @@ var apiRoutes = express.Router();
 
 apiRoutes.post('/loadbattle', function(req, res) {
   //Insertamos la batalla
-	Battle.collection.insertOne(req.body.battle, function(err,r) {});
-  Battle.findOne({name: req.body.battle.name}, function(err, battle) {
-		console.log("ID que devuelvo: "+battle._id)
-		res.json({id: battle._id});
-	});
-
+	Battle.collection.insertOne(req.body.battle, function(err,result) {
+        console.log("Id que devuelvo-> "+result["ops"][0]["_id"]);
+        res.json({id:result["ops"][0]["_id"] });
+  });
 });
 
 apiRoutes.post('/updatebattle/:id', function(req, res) {

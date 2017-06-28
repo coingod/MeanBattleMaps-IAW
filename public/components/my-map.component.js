@@ -108,9 +108,47 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     });
   };
 
+  //Consultamos la API de Wikipedia para obtener informacion de la Batalla
+  $scope.connectToWikipedia = function (title) {
+    //Reemplazamos los espacios por '_' como requiere la API
+    //title.split(' ').join('_');
+    //Consultamos a Wikipedia
+    $http.jsonp('https://es.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext&exintro&exsectionformat=plain&format=json&titles=' + title + '&callback=JSON_CALLBACK')
+      .success(function (response) {
+        var nropagina = Object.keys(response.query.pages)[0];
+        //console.log(nropagina);
+        if (nropagina != -1) {
+          //console.log(response.query.pages[nropagina]);
+          //Obtenemos el resumen de Wikipedia
+          var datos = response.query.pages[nropagina].extract;
+          //Le sacamos el código html
+          $rootScope.battle.summary = datos.replace(/<[^>]*>?/g, '');
+          //Mostramos alerta de exito
+          $mdDialog.show(
+            $mdDialog.alert()
+              .clickOutsideToClose(true)
+              .title('API Wikipedia')
+              .textContent('Se ha obtenido informacion con exito.')
+              .ariaLabel('Wikipedia Exito')
+              .ok('Confirmar')
+          );
+        } else {
+          //Mostramos alerta de falla
+          $mdDialog.show(
+            $mdDialog.alert()
+              .clickOutsideToClose(true)
+              .title('API Wikipedia')
+              .textContent('No se a obtenido informacion de Wikipedia. Compruebe que el nombre corresponde a un articulo valido.')
+              .ariaLabel('Wikipedia Fallo')
+              .ok('Confirmar')
+          );
+        }
+      });
+  };
+
   //Centramos la camara en la Batalla
   $scope.centerView = function () {
-    if (!$rootScope.battle)
+    if (ctrl.map == undefined)
       return;
 
     var bounds = new google.maps.LatLngBounds();

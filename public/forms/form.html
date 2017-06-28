@@ -1,7 +1,8 @@
 <!-- form.html -->
 <md-toolbar class="md-theme-indigo">
     <div class="md-toolbar-tools">
-        <h1 flex>Editar Batalla</h1>
+        <h1 ng-hide="!$root.adminLogged" flex>Editar la Batalla</h1>
+        <h1 ng-hide="$root.adminLogged" flex>{{$root.battle.name}}</h1>
         <md-button class="md-icon-button" ng-click="toggleRight()" aria-label="Settings">
             <md-icon class="material-icons">close</md-icon>
         </md-button>

@@ -12,9 +12,9 @@
 
         <md-dialog-content>
             <div class="md-dialog-content">
-                
+
                 <p>Los trazos permiten indicar fronteras, frentes de batalla, movimientos, etc.</p>
-                
+
                 <md-input-container class="md-block">
                     <label>Nombre</label>
                     <input type="text" name="title" ng-model="formData.title" placeholder="Ej: Frontera, 1812" required/>
@@ -33,12 +33,12 @@
                         <div ng-message="required" class="my-message">Requerido.</div>
                     </div>
                 </md-input-container>
-                
+
                 <md-input-container class="md-block">
                     <label>Color</label>
-                    <input type="text" name="color" ng-model="formData.color" placeholder="Ej: #FF0000" required/>
+                    <input type="color" name="color" ng-model="formData.color" placeholder="Ej: #FF0000" required/>
                 </md-input-container>
-                    
+
             </div>
         </md-dialog-content>
 
@@ -50,4 +50,3 @@
         </md-dialog-actions>
     </form>
 </md-dialog>
-

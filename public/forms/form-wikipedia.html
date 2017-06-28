@@ -1,0 +1,33 @@
+<!-- form-wikipedia.html -->
+<md-subheader class="md-primary">Resumen Wikipedia</md-subheader>
+
+<!-- Si el usuario esta logueado se presenta este input -->
+<md-input-container ng-hide="!$root.adminLogged" class="md-block">
+    <label>Articulo de Wikipedia</label>
+    <input ng-model="wiki_title" required name="wiki_title">
+    <div class="hint">El titulo con el que el articulo figura en Wikipedia</div>
+</md-input-container>
+
+<!-- Si el usuario esta logueado se presenta este boton -->
+<div ng-hide="!$root.adminLogged" layout-gt-xs="row">
+    <md-button ng-disabled="!form.$valid" class="md-raised" ng-click="connectToWikipedia(wiki_title)" flex-gt-xs>
+        Consultar con la API
+    </md-button>
+</div>
+
+<!-- Resumen -->
+<md-content flex layout-padding>
+    <p>
+        {{$root.battle.summary}}
+    </p>
+</md-content>
+
+<div layout-gt-xs="row">
+    <md-button ui-sref="form.basicinfo" class="md-raised md-primary" flex-gt-xs>
+        Anterior
+    </md-button>
+
+    <md-button ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+        Siguiente
+    </md-button>
+</div>

@@ -10,14 +10,15 @@
 
         <v-pane-content>
             <md-list>
-                <md-list-item faction="{{b.faction}}" army-id="{{ army.id }}" ng-repeat="army in b.armies" ng-click="doPrimaryAction($event)" class="noright">
+                <md-list-item faction="{{b.faction}}" army-id="{{ army.id }}" ng-repeat="army in b.armies" ng-click="doPrimaryAction($event)"
+                    class="noright">
                     <img alt="{{ army.title }}" ng-src="/assets/img/flags/ui/{{ army.icon }}.png" class="md-avatar" />
                     <p>{{ army.title }}</p>
-                    <md-icon class="md-secondary material-icons" aria-label="delete-army" ng-click="deleteArmy($event, b.faction, army.id)">delete</md-icon>
+                    <md-icon ng-hide="!$root.adminLogged" class="md-secondary material-icons" aria-label="delete-army" ng-click="deleteArmy($event, b.faction, army.id)">delete</md-icon>
                 </md-list-item>
             </md-list>
 
-            <div layout-gt-xs="row">
+            <div ng-hide="!$root.adminLogged" layout-gt-xs="row">
                 <md-button ng-click="addArmy($event, b.faction)" flex-gt-xs>
                     Agregar
                 </md-button>
@@ -26,7 +27,7 @@
 
     </v-pane>
 
-    <div layout-gt-xs="row">
+    <div ng-hide="!$root.adminLogged" layout-gt-xs="row">
         <md-button class="md-raised" ng-click="addBelligerent($event)" flex-gt-xs>
             Agregar
         </md-button>
@@ -35,7 +36,7 @@
 </v-accordion>
 
 <div layout-gt-xs="row">
-    <md-button ui-sref="form.basicinfo" class="md-raised md-primary" flex-gt-xs>
+    <md-button ui-sref="form.wikipedia" class="md-raised md-primary" flex-gt-xs>
         Anterior
     </md-button>
 

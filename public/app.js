@@ -2,21 +2,21 @@ var app = angular.module('meanBattleMaps', ['ngMaterial', 'ngMap', 'ngAnimate', 
 
 // our controller for the form
 // =============================================================================
-app.controller('appController', function($scope, $location, NgMap) {
+app.controller('appController', function ($scope, $location, NgMap) {
 
-  //Configuramos la URL de la web para el plugin de FB
-  $scope.fbhref=$location.absUrl();
+    //Configuramos la URL de la web para el plugin de FB
+    $scope.fbhref = $location.absUrl();
 
-  // function to process the form
-  $scope.processForm = function() {
-      alert('awesome!');
-  };
+    // function to process the form
+    $scope.processForm = function () {
+        alert('awesome!');
+    };
 
 });
 
 // configuring our routes 
 // =============================================================================
-app.config(function($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
 
     $stateProvider
 
@@ -33,6 +33,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         .state('form.basicinfo', {
             url: '/basicinfo',
             templateUrl: '/forms/form-basicinfo.html'
+        })
+
+        // url will be /form/wikipedia
+        .state('form.wikipedia', {
+            url: '/wikipedia',
+            templateUrl: '/forms/form-wikipedia.html'
         })
 
         // url will be /form/belligerents

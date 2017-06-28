@@ -3,17 +3,14 @@
 
 <md-list>
     <md-list-item ng-repeat="f in $root.battle.frontlines" ng-click="doPrimaryAction($event)" class="noright">
-        <md-icon 
-            class="material-icons"
-            ng-style="{color: '{{f.color}}', 'font-size': 36 + 'px', height: 36 + 'px'}"
-            >{{f.avatar}}
+        <md-icon class="material-icons" ng-style="{color: '{{f.color}}', 'font-size': 36 + 'px', height: 36 + 'px'}">{{f.avatar}}
         </md-icon>
         <p>{{ f.title }}</p>
-        <md-icon class="md-secondary material-icons" aria-label="delete-marker" ng-click="deletePath($event, f.id)">delete</md-icon>
+        <md-icon ng-hide="!$root.adminLogged" class="md-secondary material-icons" aria-label="delete-marker" ng-click="deletePath($event, f.id)">delete</md-icon>
     </md-list-item>
 </md-list>
 
-<div layout-gt-xs="row">
+<div ng-hide="!$root.adminLogged" layout-gt-xs="row">
     <md-button class="md-raised" ng-disabled="$ctrl.drawingPath" ng-click="addPath($event)" flex-gt-xs>
         Agregar
     </md-button>
@@ -24,7 +21,7 @@
         Anterior
     </md-button>
 
-    <md-button ng-click="saveBattle()" class="md-raised md-primary" flex-gt-xs>
+    <md-button ng-hide="!$root.adminLogged" ng-click="saveBattle()" class="md-raised md-primary" flex-gt-xs>
         Guardar
     </md-button>
 </div>

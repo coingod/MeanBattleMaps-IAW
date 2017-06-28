@@ -1,51 +1,72 @@
 <!-- form-basicinfo.html -->
 <md-subheader class="md-primary">Informacion Basica</md-subheader>
 
+<!-- Si el usuario no esta logueado entonces no es editable. -->
 <md-input-container class="md-block">
     <label>Nombre</label>
-    <input ng-model="$root.battle.name" required name="name">
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.name" required name="name">
     <div class="hint">Nombre de la batalla</div>
 </md-input-container>
 
+<!-- Si el usuario no esta logueado entonces no es editable. -->
 <md-input-container class="md-block">
     <label>Operacion</label>
-    <input ng-model="$root.battle.operation" required name="operation">
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.operation" required name="operation">
     <div class="hint">Operacion a la cual pertenecio</div>
 </md-input-container>
 
+<!-- Si el usuario no esta logueado entonces no es editable. -->
 <md-input-container class="md-block" required>
     <label>Conflicto</label>
-    <input ng-model="$root.battle.conflict" required name="conflict">
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.conflict" required name="conflict">
     <div class="hint">Conflicto belico al cual pertenecio</div>
 </md-input-container>
 
+<!-- Si el usuario no esta logueado entonces no es editable. -->
 <md-input-container class="md-block" required>
     <label>Locacion</label>
-    <input ng-model="$root.battle.location" required name="location">
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.location" required name="location">
     <div class="hint">Ciudad, Region y/o Pais donde sucedio</div>
 </md-input-container>
 
-<md-input-container class="md-block">
+<!-- Si el usuario esta logueado se presenta este input. Editable. -->
+<md-input-container ng-hide="!$root.adminLogged" class="md-block">
     <label>Comienzo</label>
     <md-datepicker ng-model="$root.battle.start" md-current-view="year" required name="start"></md-datepicker>
     <div class="hint">Fecha de comienzo</div>
 </md-input-container>
 
-<md-input-container class="md-block">
+<!-- Si el usuario esta logueado se presenta este input. Editable. -->
+<md-input-container ng-hide="!$root.adminLogged" class="md-block">
     <label>Finalizacion</label>
     <md-datepicker ng-model="$root.battle.end" md-current-view="year" required name="end"></md-datepicker>
     <div class="hint">Fecha de finalizacion</div>
 </md-input-container>
 
+<!-- Si el usuario NO esta logueado se presenta este input. No editable. -->
+<md-input-container ng-hide="$root.adminLogged" class="md-block">
+    <label>Comienzo</label>
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.start.toLocaleDateString()" required name="start">
+    <div class="hint">Fecha de comienzo</div>
+</md-input-container>
+
+<!-- Si el usuario NO esta logueado se presenta este input. No editable. -->
+<md-input-container ng-hide="$root.adminLogged" class="md-block">
+    <label>Finalizacion</label>
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.end.toLocaleDateString()" required name="end">
+    <div class="hint">Fecha de finalizacion</div>
+</md-input-container>
+
+<!-- Si el usuario no esta logueado entonces no es editable. -->
 <md-input-container class="md-block">
     <label>Resultado</label>
-    <input ng-model="$root.battle.result" required name="result">
+    <input ng-readonly="!$root.adminLogged" ng-model="$root.battle.result" required name="result">
     <div class="hint">Cual fue el Resultado?</div>
 </md-input-container>
 
 <div layout-gt-xs="row">
     <!-- ESto deberia estar hecho con un controlador o directiva, pero bueno. No time. -->
-    <md-button ng-if="form.$valid" ui-sref="form.belligerents" class="md-raised md-primary" flex-gt-xs>
+    <md-button ng-if="form.$valid" ui-sref="form.wikipedia" class="md-raised md-primary" flex-gt-xs>
         Siguiente
     </md-button>
     <md-button ng-if="!form.$valid" ng-disabled="true" class="md-raised md-primary" flex-gt-xs>

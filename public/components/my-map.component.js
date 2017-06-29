@@ -55,8 +55,9 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
 
   //Actualizamos una batalla en el servidor
   $scope.updateBattle = function (battle) {
+
     //Enviamos los datos al servidor
-    $http.post('/api/updatebattle/' + battle._id, { "battle": battle }).then(function successCallback(response) {
+    $http.post('/api/updatebattle/' + battle._id+"?token="+$rootScope.tokenjwt, { "battle": battle }).then(function successCallback(response) {
       console.log(response.data);
       $mdDialog.show(
         $mdDialog.alert()
@@ -91,7 +92,7 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     }
 
     //Sino la batalla es nueva y procedemos a guardarla en el servidor 
-    $http.post('/api/loadbattle', { "battle": json }).then(function successCallback(response) {
+    $http.post('/api/loadbattle?token='+$rootScope.tokenjwt, { "battle": json }).then(function successCallback(response) {
       $mdDialog.show(
         $mdDialog.alert()
           //.parent(angular.element(document.querySelector('#popupContainer')))

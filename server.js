@@ -65,23 +65,9 @@ app.get('/setup', function(req, res) {
 // ---------------------------------------------------------
 var apiRoutes = express.Router(); 
 
-apiRoutes.post('/loadbattle', function(req, res) {
-  //Insertamos la batalla
-	Battle.collection.insertOne(req.body.battle, function(err,result) {
-        console.log("Id que devuelvo-> "+result["ops"][0]["_id"]);
-        res.json({id:result["ops"][0]["_id"] });
-  });
-});
 
-apiRoutes.post('/updatebattle/:id', function(req, res) {
-	console.log(req.body.battle);
-	Battle.update({_id: req.params.id}, req.body.battle, function(err,r){
-		if (err) {
-			res.send(err);
-			}
-		res.send(r);
-	});
-});
+/* Estos endpoints van arriba del middleware para tomarlos antes de chequear el token
+ya que son publicos! */
 
 apiRoutes.get('/battle/:id', function(req, res) {
 	Battle.findOne({_id: req.params.id}, function(err, battle) {
@@ -92,26 +78,6 @@ apiRoutes.get('/battle/:id', function(req, res) {
 
 apiRoutes.get('/getbattles', function(req, res) {
 	Battle.find({}, function(err, battles) {
-		res.json(battles);
-	});
-});
-
-apiRoutes.get('/loaddefault',function(req,res){
-  //Cargamos las Batallas de prueba
-  var battles = JSON.parse(fs.readFileSync('battles.json', 'utf8'));
-  //Las guardamos en la Base de Datos
-  for (var index = 0; index < battles.length; index++) {
-    var element = battles[index];
-    Battle.collection.insertOne(element, function(err,r) {
-        console.log("Batalla: "+element.name+" insertada en la Base de Datos");
-    });
-  }
-	res.json(battles);	
-});
-
-apiRoutes.get('/deletebattles', function(req, res) {
-	Battle.collection.deleteMany({},function(err, battles) {
-		console.log("Flush exitoso!");
 		res.json(battles);
 	});
 });
@@ -163,6 +129,8 @@ apiRoutes.post('/authenticate', function(req, res) {
 	});
 });
 
+
+
 // ---------------------------------------------------------
 // route middleware to authenticate and check token
 // ---------------------------------------------------------
@@ -198,9 +166,46 @@ apiRoutes.use(function(req, res, next) {
 	
 });
 
-// ---------------------------------------------------------
-// authenticated routes
-// ---------------------------------------------------------
+/* RUTEOS AUTENTICADOS! */
+
+apiRoutes.post('/loadbattle', function(req, res) {
+  //Insertamos la batalla
+	Battle.collection.insertOne(req.body.battle, function(err,result) {
+        console.log("Id que devuelvo-> "+result["ops"][0]["_id"]);
+        res.json({id:result["ops"][0]["_id"] });
+  });
+});
+
+apiRoutes.post('/updatebattle/:id', function(req, res) {
+	console.log(req.body.battle);
+	Battle.update({_id: req.params.id}, req.body.battle, function(err,r){
+		if (err) {
+			res.send(err);
+			}
+		res.send(r);
+	});
+});
+
+apiRoutes.get('/loaddefault',function(req,res){
+  //Cargamos las Batallas de prueba
+  var battles = JSON.parse(fs.readFileSync('battles.json', 'utf8'));
+  //Las guardamos en la Base de Datos
+  for (var index = 0; index < battles.length; index++) {
+    var element = battles[index];
+    Battle.collection.insertOne(element, function(err,r) {
+        console.log("Batalla: "+element.name+" insertada en la Base de Datos");
+    });
+  }
+	res.json(battles);	
+});
+
+apiRoutes.get('/deletebattles', function(req, res) {
+	Battle.collection.deleteMany({},function(err, battles) {
+		console.log("Flush exitoso!");
+		res.json(battles);
+	});
+});
+
 apiRoutes.get('/', function(req, res) {
 	res.json({ message: 'Welcome to the coolest API on earth!' });
 });

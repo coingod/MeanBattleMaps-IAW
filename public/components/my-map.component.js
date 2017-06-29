@@ -409,6 +409,27 @@ function mapController($scope, NgMap, $mdSidenav, $mdDialog, $mdToast, $http, $m
     $mdToast.hide(toast_draingPath);
   };
 
+  //Eliminar un faccion y todos sus ejercitos
+  $scope.deleteFaction = function (ev, faction) {
+    //Buscamos la entrada de la faccion
+    var armies, index;
+    for (var i = 0; i < $rootScope.battle.belligerents.length; i++) {
+      var element = $rootScope.battle.belligerents[i];
+      if (element.faction == faction) {
+        index = i;
+      }
+    }
+    //Creamos el dialogo de confirmacion de borrado
+    var confirm = $scope.delete(ev, $rootScope.battle.belligerents[index].faction);
+    //Procesamos la opcion del usuario
+    $mdDialog.show(confirm).then(function () {
+      //Eliminamos el ejercito del arreglo de ejercitos de la faccion
+      $rootScope.battle.belligerents.splice(index, 1);
+    }, function () {
+      //console.log("CAncel");
+    });
+  };
+
   //Eliminar un Ejercito
   $scope.deleteArmy = function (ev, faction, armyID) {
     //Buscamos la entrada de la faccion

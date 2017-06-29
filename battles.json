@@ -1241,5 +1241,258 @@
             "month": 7,
             "day": 0
         }
+    },
+    {
+        "name": "Pradera del Ganso",
+        "operation": "Corporate",
+        "conflict": "Guerra de Malvinas",
+        "location": "Islas Malvinas, Argentina",
+        "result": "Victoria Britanica",
+        "summary": "La batalla de Pradera del Ganso (en inglés: Battle of Goose Green) se libró entre el 27 y 29 de mayo de 1982, durante la guerra de las islas Malvinas entre Argentina y Gran Bretaña. Fue la primera batalla terrestre que libraron ambos contendientes luego de que las fuerzas británicas desembarcadas consolidaran su cabecera de playa en San Carlos (isla Soledad). El enfrentamiento se desarrolló prácticamente en toda la extensión del istmo de Darwin y se saldó con la rendición de las fuerzas argentinas.",
+        "frontlines": [
+            {
+                "icons": [
+                    {
+                        "offset": "100%",
+                        "icon": {
+                            "path": "FORWARD_CLOSED_ARROW"
+                        }
+                    }
+                ],
+                "path": [
+                    [
+                        -51.821137125237414,
+                        -58.9775276184082
+                    ],
+                    [
+                        -51.81657429050771,
+                        -58.98576736450195
+                    ],
+                    [
+                        -51.80999450604624,
+                        -58.98731231689453
+                    ],
+                    [
+                        -51.80351990955801,
+                        -58.97684097290039
+                    ]
+                ],
+                "color": "#0000ff",
+                "title": "Refuerzos",
+                "avatar": "trending_up",
+                "id": 0
+            },
+            {
+                "icons": [
+                    {
+                        "offset": "100%",
+                        "icon": {
+                            "path": "FORWARD_CLOSED_ARROW"
+                        }
+                    }
+                ],
+                "path": [
+                    [
+                        -51.838959585377864,
+                        -58.92036437988281
+                    ],
+                    [
+                        -51.84829234523781,
+                        -58.9387321472168
+                    ],
+                    [
+                        -51.853170063326885,
+                        -58.96757125854492
+                    ],
+                    [
+                        -51.846171433348815,
+                        -58.99332046508789
+                    ],
+                    [
+                        -51.830897917463005,
+                        -58.98164749145508
+                    ]
+                ],
+                "color": "#0000ff",
+                "title": "Refuerzos",
+                "avatar": "trending_up",
+                "id": 1
+            },
+            {
+                "icons": [
+                    {
+                        "offset": "100%",
+                        "icon": {
+                            "path": "FORWARD_CLOSED_ARROW"
+                        }
+                    }
+                ],
+                "path": [
+                    [
+                        -51.76868973964186,
+                        -58.94783020019531
+                    ],
+                    [
+                        -51.77219521133074,
+                        -58.95435333251953
+                    ],
+                    [
+                        -51.77633769050661,
+                        -58.95606994628906
+                    ],
+                    [
+                        -51.781541804846626,
+                        -58.957271575927734
+                    ]
+                ],
+                "color": "#ff0000",
+                "title": "Avance Britanico",
+                "avatar": "trending_up",
+                "id": 2
+            },
+            {
+                "icons": [
+                    {
+                        "offset": "100%",
+                        "icon": {
+                            "path": "FORWARD_CLOSED_ARROW"
+                        }
+                    }
+                ],
+                "path": [
+                    [
+                        -51.78738244272959,
+                        -58.95692825317383
+                    ],
+                    [
+                        -51.79439021006283,
+                        -58.95744323730469
+                    ],
+                    [
+                        -51.79757519891149,
+                        -58.96568298339844
+                    ]
+                ],
+                "color": "#ff0000",
+                "title": "Avance Britanico",
+                "avatar": "trending_up",
+                "id": 3
+            }
+        ],
+        "belligerents": [
+            {
+                "armies": [
+                    {
+                        "lng": -58.97101940981452,
+                        "lat": -51.80458145738194,
+                        "icon": "ar",
+                        "title": "12º Regimiento de Infanteria",
+                        "id": 0
+                    },
+                    {
+                        "lng": -58.97668423525397,
+                        "lat": -51.82612395597016,
+                        "icon": "ar",
+                        "title": "25º Regimiento de Infanteria",
+                        "id": 1
+                    },
+                    {
+                        "lng": -58.98063244692389,
+                        "lat": -51.80224618381051,
+                        "icon": "ar",
+                        "title": "8º Regimiento de Infanteria",
+                        "id": 2
+                    }
+                ],
+                "faction": "Argentina"
+            },
+            {
+                "armies": [
+                    {
+                        "lng": -58.9454418646485,
+                        "lat": -51.76709632831035,
+                        "icon": "uk",
+                        "title": "2º Batallon de Paracaidistas",
+                        "id": 0
+                    }
+                ],
+                "faction": "Reino Unido"
+            }
+        ],
+        "markers": [
+            {
+                "lng": -58.936858795800845,
+                "lat": -51.773469935690585,
+                "icon": {
+                    "anchor": [
+                        16,
+                        16
+                    ],
+                    "origin": [
+                        0,
+                        0
+                    ],
+                    "size": [
+                        32,
+                        32
+                    ],
+                    "url": "/assets/img/icons/battle.png"
+                },
+                "title": "Artilleria Defensiva",
+                "id": 0
+            },
+            {
+                "lng": -58.95745816103522,
+                "lat": -51.78462158301756,
+                "icon": {
+                    "anchor": [
+                        16,
+                        16
+                    ],
+                    "origin": [
+                        0,
+                        0
+                    ],
+                    "size": [
+                        32,
+                        32
+                    ],
+                    "url": "/assets/img/icons/battle.png"
+                },
+                "title": "Ofensiva Britanica",
+                "id": 1
+            },
+            {
+                "lng": -58.971534393945376,
+                "lat": -51.798636886712266,
+                "icon": {
+                    "anchor": [
+                        16,
+                        16
+                    ],
+                    "origin": [
+                        0,
+                        0
+                    ],
+                    "size": [
+                        32,
+                        32
+                    ],
+                    "url": "/assets/img/icons/battle.png"
+                },
+                "title": "Detencion del Avance",
+                "id": 2
+            }
+        ],
+        "end": {
+            "year": 1982,
+            "month": 4,
+            "day": 29
+        },
+        "start": {
+            "year": 1982,
+            "month": 4,
+            "day": 27
+        }
     }
 ]

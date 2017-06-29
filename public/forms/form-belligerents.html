@@ -5,8 +5,8 @@
 
     <v-pane ng-repeat="b in $root.battle.belligerents" expanded>
         <v-pane-header>
-            <md-icon ng-hide="!$root.adminLogged" class="md-secondary material-icons" aria-label="delete-army" ng-click="deleteFaction($event, b.faction)">delete</md-icon>
             {{b.faction}}
+            <md-icon ng-hide="!$root.adminLogged" class="md-secondary material-icons" aria-label="delete-army" ng-click="deleteFaction($event, b.faction)">delete</md-icon>
         </v-pane-header>
 
         <v-pane-content>
